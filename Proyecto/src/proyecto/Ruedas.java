@@ -41,7 +41,7 @@ public class Ruedas {
         }       
     }
     public void paint(Graphics g){
-        int[] size = {10, 25};
+        int[] size = {12, 25};
         Graphics2D g2d = (Graphics2D)g;        
         AffineTransform tran = g2d.getTransform();
         g2d.setColor(Color.GRAY);   
