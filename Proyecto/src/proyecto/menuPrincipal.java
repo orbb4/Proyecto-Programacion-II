@@ -22,5 +22,6 @@ public class menuPrincipal extends JPanel{
         g.setColor(Color.BLACK);
         g.setFont( new Font( "Arial", Font.BOLD, 100 ) );
         g.drawString("MENÚ PRINCIPAL", 300, 100);
+
     }
 }
