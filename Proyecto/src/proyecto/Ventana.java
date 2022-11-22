@@ -10,6 +10,7 @@ public class Ventana extends JFrame {
     
     private final Color COLOR_PANEL = new Color(50, 50, 160);
     private menuPrincipal menuPrincipal; // minusculas :(
+    private Juego nuevoJuego;
     public Ventana(){
         super();
         this.setLayout(null);
@@ -23,9 +24,14 @@ public class Ventana extends JFrame {
         this.setVisible(true); 
         this.setResizable(true);
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        menuPrincipal = new menuPrincipal();     
+        menuPrincipal = new menuPrincipal();
+        nuevoJuego = new Juego();
         menuPrincipal.setBounds(0, 0, 1370, 700);
-        this.add(menuPrincipal);      
+        nuevoJuego.setBounds(0, 0, 1370, 700);
+        this.add(menuPrincipal);
+        this.add(nuevoJuego);
+        menuPrincipal.setVisible(false);
+        nuevoJuego.setVisible(true);
 
    }        
 }         
