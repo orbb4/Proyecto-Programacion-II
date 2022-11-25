@@ -17,28 +17,28 @@ public class FigurasPista {
             g.setColor(Color.GRAY);
             g.fillRect(px, py, ax, ly);
             g.setColor(Color.GRAY);
-            g.fillRect(px, py+ly, ly, ax);
+            g.fillRect(px, py+ly, ly, ax-ly);
         }
         
         if(choice==2){
             g.setColor(Color.GRAY);
             g.fillRect(px, py, ly, ax);
             g.setColor(Color.GRAY);
-            g.fillRect(px, py+ax, ax, ly);
+            g.fillRect(px+ly, py+(ax-ly), ax-ly, ly);
         }
         
         if(choice==3){
             g.setColor(Color.GRAY);
             g.fillRect(px, py, ax, ly);
             g.setColor(Color.GRAY);
-            g.fillRect(px+(ax-ly), py+ly, ly, ax);
+            g.fillRect(px+(ax-ly), py+ly, ly, ax-ly);
         }
         
         if(choice==4){
             g.setColor(Color.GRAY);
             g.fillRect(px, py, ly, ax);
             g.setColor(Color.GRAY);
-            g.fillRect(px-(ax-ly), py+ax, ax, ly);
+            g.fillRect(px-(ax-ly), py+(ax-ly), ax-ly, ly);
         }
     }
 }

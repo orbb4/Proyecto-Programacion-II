@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
 public class Juego extends JPanel{
+    private Pista pista1;
     private Ruedas ruedas;
     private Rectangle rect;
     private int angRuedasDelanteras = 0;
@@ -14,11 +15,13 @@ public class Juego extends JPanel{
         this.addKeyListener(new KeyChecker());
         rect = new Rectangle(600, 200, 40, 80);
         ruedas = new Ruedas(rect);
+        pista1= new Pista();
     }
     public void paint(Graphics g){       
         super.paint(g);
         this.setBackground(Color.GREEN);
         ruedas.paint(g);
+        pista1.paint(g);
         // prototipo. Se deberia llamar al paint de una instancia de Auto
         g.setColor(Color.RED);
         g.fillRect(rect.x, rect.y, rect.width, rect.height);
