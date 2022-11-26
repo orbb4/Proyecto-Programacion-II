@@ -1,6 +1,7 @@
 package proyecto;
 import java.awt.*;
 import java.awt.Graphics;
+import javax.swing.JPanel;
 
 public class Pista{
     private FigurasPista p1;
@@ -23,14 +24,14 @@ public class Pista{
 
     }
      
-     public void paint(Graphics g){
-         p1.paint(g, 1);
-         p2.paint(g, 2);
-         p3.paint(g, 3);
-         p4.paint(g, 4);
-         p5.paint(g, 5);
-         p6.paint(g, 6);
-         p7.paint(g, 7);
-         p8.paint(g, 8);
+     public void paint(Graphics g, JPanel panel){
+        p1.paint(g, 1, panel);
+        p2.paint(g, 2, panel);
+        p3.paint(g, 3, panel);
+        p4.paint(g, 4, panel);
+        p5.paint(g, 5, panel);
+        p6.paint(g, 6, panel);
+        p7.paint(g, 7, panel);
+        p8.paint(g, 8, panel);
     }
 }
