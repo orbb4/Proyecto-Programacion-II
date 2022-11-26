@@ -62,6 +62,7 @@ public class Auto {
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
     }
     public void paint(Graphics g){
+        this.Giro();
         g.setColor(Color.red);
         g.fillPolygon(p);   
     }
