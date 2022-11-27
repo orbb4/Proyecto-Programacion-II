@@ -39,8 +39,8 @@ public class FigurasPista {
             g.fillRect(px, py+ly, ly, ax-ly);*/
             
             g.drawImage(curva1, px, py, ly, ly, panel);
-            g.drawImage(vertical, px, py+ly, ly, ax-ly, panel);
-            g.drawImage(horizontal, px+ly, py, ax/2, ly, panel);
+            g.drawImage(vertical, px, py+ly, ly, ly, panel);
+            g.drawImage(horizontal, px+ly, py, ly, ly, panel);
         }
         
         if(choice==2){
@@ -49,9 +49,9 @@ public class FigurasPista {
             g.setColor(Color.GRAY);
             g.fillRect(px+ly, py+(ax-ly), ax-ly, ly);*/
             
-            g.drawImage(vertical, px, py, ly, ax-ly, panel);
+            g.drawImage(vertical, px, py, ly, ly, panel);
             g.drawImage(curva3, px, py+ax-ly, ly, ly, panel);
-            g.drawImage(horizontal, px+ly, py+(ax-ly), ax/2, ly, panel);
+            g.drawImage(horizontal, px+ly, py+(ax-ly), ly, ly, panel);
         }
         
         if(choice==3){
@@ -61,9 +61,9 @@ public class FigurasPista {
             g.fillRect(px+(ax-ly), py+ly, ly, ax-ly);
             g.fillRect(px+(ax-ly), py, ly, ly);
         */
-            g.drawImage(horizontal, px, py, ax/2, ly, panel);
+            g.drawImage(horizontal, px, py, ly, ly, panel);
             g.drawImage(curva2, px+(ax-ly), py, ly, ly, panel);
-            g.drawImage(vertical, px+(ax-ly), py+ly, ly, ax-ly, panel);            
+            g.drawImage(vertical, px+(ax-ly), py+ly, ly, ly, panel);            
         }
         
         if(choice==4){
@@ -72,9 +72,9 @@ public class FigurasPista {
             g.setColor(Color.GRAY);
             g.fillRect(px-(ax-ly), py+(ax-ly), ax-ly, ly);*/
             
-            g.drawImage(vertical, px, py, ly, ax-ly, panel);
+            g.drawImage(vertical, px, py, ly, ly, panel);
             g.drawImage(curva4, px, py+ax-ly, ly, ly, panel);
-            g.drawImage(horizontal, px-(ax-ly), py+(ax-ly), ax/2, ly, panel);
+            g.drawImage(horizontal, px-(ax-ly), py+(ax-ly), ly, ly, panel);
         }
         
         if(choice==5){
@@ -95,17 +95,18 @@ public class FigurasPista {
             g.fillRect(px+(2*ax), py+(ax-ly), ax-ly, ly); */
             
             //2:
-            g.drawImage(vertical, px, py, ly, ax-ly, panel);
+            g.drawImage(vertical, px, py, ly, ly, panel);
             g.drawImage(curva3, px, py+ax-ly, ly, ly, panel);
-            g.drawImage(horizontal, px+ly, py+(ax-ly), ax/2, ly, panel);
+            g.drawImage(horizontal, px+ly, py+(ax-ly), ly, ly, panel);
             
             //union:
-            g.drawImage(horizontal, px+ly+(ax/2), py+(ax-ly), ax, ly, panel);
+            g.drawImage(horizontal, px+ly+(ax/2), py+(ax-ly), ly, ly, panel);
+            g.drawImage(horizontal, px+ly+(ax/2)+ly, py+(ax-ly), ly, ly, panel);
             
             //4:
-            g.drawImage(vertical, px+(2*ax)+ax-ly, py, ly, ax-ly, panel);
+            g.drawImage(vertical, px+(2*ax)+ax-ly, py, ly, ly, panel);
             g.drawImage(curva4, px+(2*ax)+ax-ly, py+ax-ly, ly, ly, panel);
-            g.drawImage(horizontal, px+ly+(ax/2)+ax, py+(ax-ly), ax/2, ly, panel);
+            g.drawImage(horizontal, px+ly+(ax/2)+ax, py+(ax-ly), ly, ly, panel);
         }
         
         if(choice==6){
@@ -127,16 +128,16 @@ public class FigurasPista {
             
             //1:
             g.drawImage(curva1, px, py, ly, ly, panel);
-            g.drawImage(vertical, px, py+ly, ly, ax-ly, panel);
-            g.drawImage(horizontal, px+ly, py, ax/2, ly, panel);
+            g.drawImage(vertical, px, py+ly, ly, ly, panel);
+            g.drawImage(horizontal, px+ly, py, ly, ly, panel);
             
             //union:
-            g.drawImage(horizontal, px+ly+(ax/2), py, ax, ly, panel);
-            
+            g.drawImage(horizontal, px+ly+(ax/2), py, ly, ly, panel);
+            g.drawImage(horizontal, px+ly+(ax/2)+ly, py, ly, ly, panel);
             //3:
-            g.drawImage(horizontal, px+ly+(ax/2)+ax, py, ax/2, ly, panel);
+            g.drawImage(horizontal, px+ly+(ax/2)+ax, py, ly, ly, panel);
             g.drawImage(curva2, px+ly+2*(ax/2)+ax, py, ly, ly, panel);
-            g.drawImage(vertical, px+ly+2*(ax/2)+ax, py+ly, ly, ax-ly, panel);  
+            g.drawImage(vertical, px+ly+2*(ax/2)+ax, py+ly, ly, ly, panel);  
         }
         
         if(choice==7){
@@ -162,10 +163,10 @@ public class FigurasPista {
             g.drawImage(horizontal, px+ly, py, ax/2, ly, panel);
             
             //union:
-            g.drawImage(vertical, px, py+ax, ly, ax, panel);
-            
+            g.drawImage(vertical, px, py+ax, ly, ax/2, panel);
+            g.drawImage(vertical, px, py+ax + (ax/2), ly, ax/2, panel);
             //2:
-            g.drawImage(vertical, px, py+2*ax, ly, ax-ly, panel);
+            g.drawImage(vertical, px, py+ax + (ax/2)*2, ly, ax/2, panel);
             g.drawImage(curva3, px, py+(2*ax)+ax-ly, ly, ly, panel);
             g.drawImage(horizontal, px+ly, py+(2*ax)+ax-ly, ax/2, ly, panel);
             
@@ -196,10 +197,11 @@ public class FigurasPista {
             g.drawImage(vertical, px+(ax-ly), py+ly, ly, ax-ly, panel); 
             
             //union:
-            g.drawImage(vertical, px+(ax-ly), py+ax, ly, ax, panel);
+            g.drawImage(vertical, px+(ax-ly), py+ax, ly, ax/2, panel);
+            g.drawImage(vertical, px+(ax-ly), py+ax+(ax/2), ly, ax/2, panel);
             
             //4:
-            g.drawImage(vertical, px+(ax-ly), py+2*ax, ly, ax-ly, panel);
+            g.drawImage(vertical, px+(ax-ly), py+ax+(ax/2) + ax/2, ly, ax/2, panel);
             g.drawImage(curva4, px+(ax-ly), py+2*ax+(ax-ly), ly, ly, panel);
             g.drawImage(horizontal, px, py+2*ax+(ax-ly), ax/2, ly, panel);
             

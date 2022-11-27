@@ -29,7 +29,6 @@ public class Juego extends JPanel{
         ruedas.paint(g);
         pista1.paint(g, this);
         auto.paint(g);
-
         Toolkit.getDefaultToolkit().sync(); //para la inestabilidad del framerate
         g.dispose();
         repaint();
