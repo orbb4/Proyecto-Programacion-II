@@ -63,7 +63,7 @@ public class Auto {
     }
     public void paint(Graphics g){
         this.Giro();
-        g.setColor(Color.red);
-        g.fillPolygon(p);   
+        //g.setColor(Color.red);
+        //g.fillPolygon(p);   
     }
 }
