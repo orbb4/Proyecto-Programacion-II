@@ -207,6 +207,11 @@ public class FigurasPista {
             
         }
         
-        
+        if(choice==9){
+            g.drawImage(vertical, px, py, ly, ax, panel);
+        }
+        if(choice==10){
+            g.drawImage(horizontal, px, py, ax, ly, panel);
+        }
     }
 }
