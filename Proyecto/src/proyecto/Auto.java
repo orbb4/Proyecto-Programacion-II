@@ -37,12 +37,16 @@ public class Auto {
         
     }
     public void Giro(){
-        float cos = (float) Math.cos(Math.toRadians(angle));
-        float sin = (float) Math.sin(Math.toRadians(angle));
+        angle = ruedas.getAngle();
     }
     public void paint(Graphics g){
-        this.Giro();
+        Graphics2D g2d = (Graphics2D)g;
+        AffineTransform tran = g2d.getTransform();
+        tran.rotate(angle, rect.x + 20, rect.y + 40);
+        g2d.setTransform(tran);
+        angle++;
         g.setColor(Color.red);
-        g.fillRect(rect.x, rect.y, 40, 80);
+        g2d.draw(rect);
+        g2d.fill(rect);
     }
 }

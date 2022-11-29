@@ -45,11 +45,13 @@ public class Juego extends JPanel{
             if(ch == 'd' && angRuedasDelanteras < 20){
                 angRuedasDelanteras++;
                 ruedas.setAngulo(angRuedasDelanteras, true, true, false, false);
+                auto.Giro();
                 Juego.this.repaint();
             }
             if(ch == 'a' && angRuedasDelanteras > -20){
                 angRuedasDelanteras--;
                 ruedas.setAngulo(angRuedasDelanteras, true, true, false, false);
+                auto.Giro();
                 Juego.this.repaint();
             }
         }
