@@ -28,32 +28,40 @@ public class Juego extends JPanel implements KeyListener{
         this.setBackground(Color.GREEN);
         pista1.paint(g, this);
         auto.paint(g);
+        auto.actualizaPosicion();
+        repaint();
+        
     }
     @Override
     public void keyPressed(KeyEvent event){
         char ch = event.getKeyChar();
-        System.out.println("!!");
+        int maxAnguloRuedas = 16;
         if(ch == 'w'){
-            auto.Acelerar();
+            auto.Acelerar(true);
+            Juego.this.repaint();
+        }
+        if(ch == 's'){
+            auto.Acelerar(false);
             Juego.this.repaint();
         }
         if(ch == 'd'){
-            if(angRuedasDelanteras <= 20){
+            if(angRuedasDelanteras <= maxAnguloRuedas){
                 angRuedasDelanteras++;
             }          
             auto.rotaRuedas(angRuedasDelanteras);
-            auto.setAngle(auto.getAngle()+2);
+            auto.setAngle(auto.getAngle()+3f);
             Juego.this.repaint();
         }
         if(ch == 'a'){
-            if(angRuedasDelanteras >= -20){
+            if(angRuedasDelanteras >= -maxAnguloRuedas){
                 angRuedasDelanteras--;
             }
             
             auto.rotaRuedas(angRuedasDelanteras);
-            auto.setAngle(auto.getAngle()-2);
+            auto.setAngle(auto.getAngle()-3f);
             Juego.this.repaint();
         }
+        
     }
 
     @Override
@@ -62,7 +70,6 @@ public class Juego extends JPanel implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        angRuedasDelanteras = 0;
     }
 }
 

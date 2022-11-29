@@ -23,14 +23,16 @@ public class Auto {
     float x = 0f;   
     float y = 0f;   
     private Ruedas ruedas;
-    private int velocidad;
+    private float[] accel  = {0f, 0f}; // aceleracion
+    private float[] velocidad = {0f, 0f};
     private float angle;
-    private Rectangle rect;
+    private Rectangle2D.Float rect;
     
     public Auto(Rectangle rectAuto){
+        
         ruedas = new Ruedas(new Rectangle(600, 200, 40 ,80));
-        angle = 0;
-        rect = new Rectangle(600, 200, 40, 80);
+        angle = 0f;
+        rect = new Rectangle2D.Float(600f, 200f, 40f, 80f);
         
     }
     public float getAngle(){
@@ -39,14 +41,67 @@ public class Auto {
     public void setAngle(float angle){
         this.angle = angle;
     }
-    public void Acelerar(){
+    public void Acelerar(boolean retroceso){
+        
+        System.out.println("Auto acelerando");
+        System.out.println(angle);
+        
+        accel[0] +=  0.1*(float)Math.sin(Math.toRadians(angle));
+        if(retroceso){
+            accel[1] +=  -0.1*(float)Math.cos(Math.toRadians(angle));
+        }else{
+            accel[1] +=  0.1*(float)Math.cos(Math.toRadians(angle));
+        }
         
     }
-    public Rectangle getRect(){
+    
+    public void actualizaPosicion(){
+        float limiteDeVelocidad = 0.05f;
+        float limiteDeAccel = 0.05f;
+        // revisamos si la aceleracion sobrepasa el limite del auto, si es asi
+        // la aceleracion se queda en el valor limite en vez de seguir subiendo
+        if(Math.abs(accel[0]) > limiteDeAccel){
+            if(accel[0] > 0){
+                accel[0] = limiteDeAccel;
+            }else{
+                accel[0] = -limiteDeAccel;
+            }         
+        }
+        if(Math.abs(accel[1]) > limiteDeAccel){
+            if(accel[1] > 0){
+                accel[1] = limiteDeAccel;
+            }else{
+                accel[1] = -limiteDeAccel;
+            }         
+        }
+        velocidad[0] += accel[0];
+        if(Math.abs(velocidad[0]) > limiteDeVelocidad){
+            if(velocidad[0] > 0){
+                velocidad[0] = limiteDeVelocidad;
+            }else{
+                velocidad[0] = -limiteDeVelocidad;
+            }   
+        }
+        if(Math.abs(velocidad[1]) > limiteDeVelocidad){
+            if(velocidad[1] > 0){
+                velocidad[1] = limiteDeVelocidad;
+            }else{
+                velocidad[1] = -limiteDeVelocidad;
+            }   
+        }
+        rect.x += velocidad[0];  
+        velocidad[1] += accel[1];
+        if(velocidad[1] > limiteDeVelocidad){
+            velocidad[1] = limiteDeVelocidad;
+        }
+        rect.y += velocidad[1];
+        System.out.println("Velocidad: " + velocidad[0] + ", " + velocidad[1] + " Accel: " + accel[0] + ", " + accel[1]);
+    }
+    public Rectangle2D.Float getRect(){
         return rect;
     }
     public void Giro(){
-        float cos = (float) Math.cos(Math.toRadians(angle));
+        float cos = (float)Math.cos(Math.toRadians(angle));
         float sin = (float) Math.sin(Math.toRadians(angle));
         
         
