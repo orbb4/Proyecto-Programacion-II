@@ -33,19 +33,25 @@ public class Juego extends JPanel implements KeyListener{
     public void keyPressed(KeyEvent event){
         char ch = event.getKeyChar();
         System.out.println("!!");
-
         if(ch == 'w'){
             auto.Acelerar();
             Juego.this.repaint();
         }
-        if(ch == 'd' && angRuedasDelanteras < 20){
-            angRuedasDelanteras++;
+        if(ch == 'd'){
+            if(angRuedasDelanteras <= 20){
+                angRuedasDelanteras++;
+            }          
             auto.rotaRuedas(angRuedasDelanteras);
+            auto.setAngle(auto.getAngle()+2);
             Juego.this.repaint();
         }
-        if(ch == 'a' && angRuedasDelanteras > -20){
-            angRuedasDelanteras--;
+        if(ch == 'a'){
+            if(angRuedasDelanteras >= -20){
+                angRuedasDelanteras--;
+            }
+            
             auto.rotaRuedas(angRuedasDelanteras);
+            auto.setAngle(auto.getAngle()-2);
             Juego.this.repaint();
         }
     }
@@ -56,6 +62,7 @@ public class Juego extends JPanel implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent ke) {
+        angRuedasDelanteras = 0;
     }
 }
 

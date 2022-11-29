@@ -29,9 +29,15 @@ public class Auto {
     
     public Auto(Rectangle rectAuto){
         ruedas = new Ruedas(new Rectangle(600, 200, 40 ,80));
-        angle = ruedas.getAngle();
+        angle = 0;
         rect = new Rectangle(600, 200, 40, 80);
         
+    }
+    public float getAngle(){
+        return angle;
+    }
+    public void setAngle(float angle){
+        this.angle = angle;
     }
     public void Acelerar(){
         
@@ -75,9 +81,9 @@ public class Auto {
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
         AffineTransform tran = g2d.getTransform();
-        tran.rotate(angle, rect.x + 20, rect.y + 40);
+        tran.rotate(Math.toRadians(angle), rect.x + 20, rect.y + 40);
         g2d.setTransform(tran);
-        angle++;
+        //angle++;
         g.setColor(Color.red);
         g2d.draw(rect);
         g2d.fill(rect);
