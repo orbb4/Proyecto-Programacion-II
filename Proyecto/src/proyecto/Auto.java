@@ -24,11 +24,14 @@ public class Auto {
     private Ruedas ruedas;
     private int velocidad;
     private float angle;
-    private Polygon p;
+    private Rectangle rect;
     
-    public Auto(Ruedas r){
+    public Auto(Ruedas r, Rectangle rectAuto){
+        rect = rectAuto;
         ruedas = r;
         angle = ruedas.getAngle();
+        rect = new Rectangle(600, 200, 40, 80);
+        
     }
     public void Acelerar(){
         
@@ -36,34 +39,10 @@ public class Auto {
     public void Giro(){
         float cos = (float) Math.cos(Math.toRadians(angle));
         float sin = (float) Math.sin(Math.toRadians(angle));
-        
-        p = new Polygon();
-        
-        //para los sigueintes puntos se considera que el auto está en horizontal (angulo 0)
-        
-        //punto adelante-izquierda del auto
-        float px = 140f;
-        float py = -60f;
-        p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
-        
-        //punto atras-izquierda del auto
-        px = -140f;
-        py = -100f;
-        p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
-        
-        //punto atras-derecha del auto
-        px = -140f;
-        py = 100f;
-        p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
-
-        //punto adelante-derecha del auto
-        px = 140f;
-        py = 60f;
-        p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
     }
     public void paint(Graphics g){
         this.Giro();
         g.setColor(Color.red);
-        g.fillPolygon(p);   
+        g.fillRect(rect.x, rect.y, 40, 80);
     }
 }

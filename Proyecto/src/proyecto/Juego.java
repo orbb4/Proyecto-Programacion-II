@@ -21,7 +21,7 @@ public class Juego extends JPanel{
         rect = new Rectangle(600, 200, 40, 80);
         ruedas = new Ruedas(rect);
         pista1= new Pista();
-        auto = new Auto(ruedas);
+        auto = new Auto(ruedas, rect);
     }
     public void paint(Graphics g){       
         super.paint(g);
