@@ -1,6 +1,7 @@
 package proyecto;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 public class Ruedas {
     // Angulos de las ruedas. En grados.
@@ -16,6 +17,7 @@ public class Ruedas {
         anguloSI = anguloSD = anguloII = anguloID = 0;
     }
 
+    
 /**
  * Este método establece el angulo de las ruedas. 
  * <p>Se puede cambiar el ángulo de múltiples ruedas a la vez. Al hacerlo todas
@@ -43,12 +45,12 @@ public class Ruedas {
     public int getAngle(){
         return anguloII;
     }
+
     public void paint(Graphics g){
         int[] size = {12, 25};
         Graphics2D g2d = (Graphics2D)g;        
         AffineTransform tran = g2d.getTransform();
         g2d.setColor(Color.GRAY);   
-
         Rectangle ruedaSI = new Rectangle(autoRect.x-size[0], autoRect.y+size[0], size[0], size[1]);
         Rectangle ruedaSD = new Rectangle(autoRect.x+autoRect.width, autoRect.y+size[0], size[0], size[1]);
         Rectangle ruedaII = new Rectangle(autoRect.x-size[0], autoRect.y+autoRect.width+size[0], size[0], size[1]);

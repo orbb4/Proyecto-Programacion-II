@@ -12,6 +12,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 
 /**
  *
@@ -24,21 +25,26 @@ public class Auto {
     private Ruedas ruedas;
     private int velocidad;
     private float angle;
-    private Polygon p;
+    private Rectangle2D.Float p;
     
-    public Auto(Ruedas r){
-        ruedas = r;
+    public Auto(){
+        
+        p = new Rectangle2D.Float(600f, 200f, 40f, 80f);
+        ruedas = new Ruedas(new Rectangle(600, 200, 40 ,80));
         angle = ruedas.getAngle();
     }
     public void Acelerar(){
         
     }
+    public Rectangle2D.Float getRect(){
+        return p;
+    }
     public void Giro(){
         float cos = (float) Math.cos(Math.toRadians(angle));
         float sin = (float) Math.sin(Math.toRadians(angle));
         
-        p = new Polygon();
         
+        /*
         //para los sigueintes puntos se considera que el auto está en horizontal (angulo 0)
         
         //punto adelante-izquierda del auto
@@ -60,10 +66,15 @@ public class Auto {
         px = 140f;
         py = 60f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
+*/
     }
-    public void paint(Graphics g){
+    public void rotaRuedas(int angulo){
+        ruedas.setAngulo(angulo, true, true, false, false);
+    }
+    public void paint(Graphics g){      
         this.Giro();
         g.setColor(Color.red);
-        g.fillPolygon(p);   
+        g.fillRect((int)p.x, (int)p.y, (int)p.width, (int)p.height);
+        ruedas.paint(g);
     }
 }

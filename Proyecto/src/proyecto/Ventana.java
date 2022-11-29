@@ -25,15 +25,16 @@ public class Ventana extends JFrame {
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         
         //INTEGRACION DE ELEMENTOS VARIOS
-        menuPrincipal = new menuPrincipal();
+        //menuPrincipal = new menuPrincipal();
         nuevoJuego = new Juego();
-        this.add(menuPrincipal);
+        //this.add(menuPrincipal);
         this.add(nuevoJuego);
+        this.addKeyListener(nuevoJuego);
         
         //CONFIGURACION DE ELEMENTOS
-        menuPrincipal.setBounds(0, 0, 1370, 700);
+        //menuPrincipal.setBounds(0, 0, 1370, 700);
         nuevoJuego.setBounds(0, 0, 1370, 700);
-        menuPrincipal.setVisible(false);
+        //menuPrincipal.setVisible(false);
         nuevoJuego.setVisible(true);
 
    }        

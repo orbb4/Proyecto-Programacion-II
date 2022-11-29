@@ -61,6 +61,7 @@ public class Pista{
     }
      
      public void paint(Graphics g, JPanel panel){
+         
         //Pista1(rectangular):
         p1.paint(g, 1, panel);
         p2.paint(g, 10, panel);
