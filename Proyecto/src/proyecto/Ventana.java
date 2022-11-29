@@ -8,7 +8,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Ventana extends JFrame {
     
-    private final Color COLOR_PANEL = new Color(50, 50, 160);
+private final Color COLOR_PANEL = new Color(50, 50, 160);
     private menuPrincipal menuPrincipal; // minusculas :(
     private Juego nuevoJuego;
     

@@ -20,14 +20,8 @@ public class Juego extends JPanel implements KeyListener{
         //INSTANCIACIONES 
         rect = new Rectangle(600, 200, 40, 80);
         pista1= new Pista();
-        
-        auto = new Auto();
-        // input
-        InputMap inputMap = this.getInputMap();
-        inputMap.put(KeyStroke.getKeyStroke(Character.valueOf('a'), 0), "foo");
-        inputMap.put(KeyStroke.getKeyStroke(Character.valueOf('a'), InputEvent.CTRL_DOWN_MASK), "foo");
 
-
+        auto = new Auto(rect);
     }
     public void paint(Graphics g){       
         super.paint(g);

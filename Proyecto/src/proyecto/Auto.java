@@ -25,19 +25,19 @@ public class Auto {
     private Ruedas ruedas;
     private int velocidad;
     private float angle;
-    private Rectangle2D.Float p;
+    private Rectangle rect;
     
-    public Auto(){
-        
-        p = new Rectangle2D.Float(600f, 200f, 40f, 80f);
+    public Auto(Rectangle rectAuto){
         ruedas = new Ruedas(new Rectangle(600, 200, 40 ,80));
         angle = ruedas.getAngle();
+        rect = new Rectangle(600, 200, 40, 80);
+        
     }
     public void Acelerar(){
         
     }
-    public Rectangle2D.Float getRect(){
-        return p;
+    public Rectangle getRect(){
+        return rect;
     }
     public void Giro(){
         float cos = (float) Math.cos(Math.toRadians(angle));
@@ -71,10 +71,16 @@ public class Auto {
     public void rotaRuedas(int angulo){
         ruedas.setAngulo(angulo, true, true, false, false);
     }
-    public void paint(Graphics g){      
-        this.Giro();
+
+    public void paint(Graphics g){
+        Graphics2D g2d = (Graphics2D)g;
+        AffineTransform tran = g2d.getTransform();
+        tran.rotate(angle, rect.x + 20, rect.y + 40);
+        g2d.setTransform(tran);
+        angle++;
         g.setColor(Color.red);
-        g.fillRect((int)p.x, (int)p.y, (int)p.width, (int)p.height);
+        g2d.draw(rect);
+        g2d.fill(rect);
         ruedas.paint(g);
     }
 }
