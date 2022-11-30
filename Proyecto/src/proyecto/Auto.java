@@ -23,7 +23,7 @@ public class Auto {
     float x = 0f;   
     float y = 0f;   
     private Ruedas ruedas;
-    private float[] accel  = {0f, 0f}; // aceleracion
+    private float accel  = 0f; // aceleracion
     private float[] velocidad = {0f, 0f};
     private float angle;
     private Rectangle2D.Float rect;
@@ -42,60 +42,71 @@ public class Auto {
         this.angle = angle;
     }
     public void Acelerar(boolean retroceso){
-        
+        float magnitudAccel = 0.001f;
         System.out.println("Auto acelerando");
         System.out.println(angle);
-        
-        accel[0] +=  0.1*(float)Math.sin(Math.toRadians(angle));
-        if(retroceso){
-            accel[1] +=  -0.1*(float)Math.cos(Math.toRadians(angle));
+        if(!retroceso){
+            accel+=magnitudAccel;
         }else{
-            accel[1] +=  0.1*(float)Math.cos(Math.toRadians(angle));
+            accel-=magnitudAccel;
         }
+        
         
     }
     
     public void actualizaPosicion(){
-        float limiteDeVelocidad = 0.05f;
+        float limiteDeVelocidad = 0.1f;
         float limiteDeAccel = 0.05f;
-        // revisamos si la aceleracion sobrepasa el limite del auto, si es asi
-        // la aceleracion se queda en el valor limite en vez de seguir subiendo
-        if(Math.abs(accel[0]) > limiteDeAccel){
-            if(accel[0] > 0){
-                accel[0] = limiteDeAccel;
-            }else{
-                accel[0] = -limiteDeAccel;
-            }         
-        }
-        if(Math.abs(accel[1]) > limiteDeAccel){
-            if(accel[1] > 0){
-                accel[1] = limiteDeAccel;
-            }else{
-                accel[1] = -limiteDeAccel;
-            }         
-        }
-        velocidad[0] += accel[0];
-        if(Math.abs(velocidad[0]) > limiteDeVelocidad){
-            if(velocidad[0] > 0){
-                velocidad[0] = limiteDeVelocidad;
-            }else{
-                velocidad[0] = -limiteDeVelocidad;
-            }   
-        }
-        if(Math.abs(velocidad[1]) > limiteDeVelocidad){
-            if(velocidad[1] > 0){
-                velocidad[1] = limiteDeVelocidad;
-            }else{
-                velocidad[1] = -limiteDeVelocidad;
-            }   
-        }
+        float roce = 0.04f;
+        System.out.println(accel);
+        // Revisamos si la aceleracion sobrepasa el limite del auto y si es asi,
+        // la aceleracion se queda en el valor limite en vez de seguir subiendo.
+        // Se hara algo similar con la velocidad.
+        accel = acotaVariable(accel, limiteDeAccel);
+        // Velocidad eje x
+        velocidad[0] +=  accel*(float)Math.sin(Math.toRadians(angle));      
+        velocidad[0] = acotaVariable(velocidad[0], limiteDeVelocidad);
+        // Velocidad eje y
+        velocidad[1] -= accel*(float)Math.cos(Math.toRadians(angle));
+        velocidad[1] = acotaVariable(velocidad[1], limiteDeVelocidad);
         rect.x += velocidad[0];  
-        velocidad[1] += accel[1];
-        if(velocidad[1] > limiteDeVelocidad){
-            velocidad[1] = limiteDeVelocidad;
-        }
+        
         rect.y += velocidad[1];
-        System.out.println("Velocidad: " + velocidad[0] + ", " + velocidad[1] + " Accel: " + accel[0] + ", " + accel[1]);
+        // Manejo del roce de la pista contra el auto
+        for(int i = 0; i < 2; i++){
+            if(velocidad[i]>0){
+                velocidad[i]-=roce;
+                if(velocidad[i] < 0){
+                    velocidad[i] = 0;
+                }
+            }else if(velocidad[i] < 0){
+                velocidad[i]+=roce;
+                if(velocidad[i] > 0){
+                    velocidad[i] = 0;
+                }
+            }
+        
+        }
+
+    }
+    /**
+     * Revisa si una variable esta fuera de una cota dada (por izquierda o derecha)
+     * y si es asi, se iguala el valor de la variable al de la cota.
+     * <p>
+     * Este metodo es usado en ActualizaPosicion para que el auto no pueda
+     * tener velocidad o aceleracion superior a cierto valor
+     * @param var variable a acotar
+     * @param cota float que acotara la variable entre -cota y cota
+     */
+    private float acotaVariable(float var, float cota){
+        if(Math.abs(var) > cota){
+            if(var > 0){
+                var = cota;
+            }else{
+                var = -cota;
+            }   
+        }
+        return var;
     }
     public Rectangle2D.Float getRect(){
         return rect;

@@ -36,12 +36,13 @@ public class Juego extends JPanel implements KeyListener{
     public void keyPressed(KeyEvent event){
         char ch = event.getKeyChar();
         int maxAnguloRuedas = 16;
+        boolean retroceso = true;
         if(ch == 'w'){
-            auto.Acelerar(true);
+            auto.Acelerar(!retroceso);
             Juego.this.repaint();
         }
         if(ch == 's'){
-            auto.Acelerar(false);
+            auto.Acelerar(retroceso);
             Juego.this.repaint();
         }
         if(ch == 'd'){
