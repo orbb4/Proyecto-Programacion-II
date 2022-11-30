@@ -42,7 +42,7 @@ public class Auto {
         this.angle = angle;
     }
     public void Acelerar(boolean retroceso){
-        float magnitudAccel = 0.001f;
+        float magnitudAccel = 0.007f;
         System.out.println("Auto acelerando");
         System.out.println(angle);
         if(!retroceso){
@@ -55,9 +55,9 @@ public class Auto {
     }
     
     public void actualizaPosicion(){
-        float limiteDeVelocidad = 0.1f;
-        float limiteDeAccel = 0.05f;
-        float roce = 0.04f;
+        float limiteDeVelocidad = 1f;
+        float limiteDeAccel = 0.2f;
+        float roce = 0.5f;
         System.out.println(accel);
         // Revisamos si la aceleracion sobrepasa el limite del auto y si es asi,
         // la aceleracion se queda en el valor limite en vez de seguir subiendo.
@@ -73,6 +73,7 @@ public class Auto {
         
         rect.y += velocidad[1];
         // Manejo del roce de la pista contra el auto
+        
         for(int i = 0; i < 2; i++){
             if(velocidad[i]>0){
                 velocidad[i]-=roce;
@@ -87,6 +88,7 @@ public class Auto {
             }
         
         }
+        ruedas.setAutoRect(new Rectangle((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height));
 
     }
     /**

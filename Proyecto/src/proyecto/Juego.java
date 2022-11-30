@@ -71,6 +71,10 @@ public class Juego extends JPanel implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent ke) {
+        char ch = ke.getKeyChar();
+        if(ch == 'd' || ch == 'a'){
+            angRuedasDelanteras = 0;
+        }
     }
 }
 

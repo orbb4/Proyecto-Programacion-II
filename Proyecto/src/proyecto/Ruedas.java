@@ -45,7 +45,9 @@ public class Ruedas {
     public int getAngle(){
         return anguloII;
     }
-
+    public void setAutoRect(Rectangle r){
+        autoRect = r;
+    }
     public void paint(Graphics g){
         int[] size = {12, 25};
         Graphics2D g2d = (Graphics2D)g;        
