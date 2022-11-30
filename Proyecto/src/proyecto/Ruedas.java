@@ -5,10 +5,10 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 public class Ruedas {
     // Angulos de las ruedas. En grados.
-    private int anguloSI; // superior izquierda
-    private int anguloSD; // superior derecha
-    private int anguloII; // inferior izquierda
-    private int anguloID; // inferior derecha
+    private float anguloSI; // superior izquierda
+    private float anguloSD; // superior derecha
+    private float anguloII; // inferior izquierda
+    private float anguloID; // inferior derecha
     
     private Rectangle autoRect;
     // deberia tener como argumento una instancia de auto
@@ -28,7 +28,7 @@ public class Ruedas {
  * @param cambiaII cuando su valor es true, cambia el angulo de la rueda inferior izquierda al del parametro angulo
  * @param cambiaID cuando su valor es true, cambia el angulo de la rueda inferior derecha al del parametro angulo
  */
-    public void setAngulo(int angulo, boolean cambiaSI, boolean cambiaSD, boolean cambiaII, boolean cambiaID){
+    public void setAngulo(float angulo, boolean cambiaSI, boolean cambiaSD, boolean cambiaII, boolean cambiaID){
         if(cambiaSI){
             anguloSI = angulo;
         }
@@ -42,7 +42,7 @@ public class Ruedas {
             anguloID = angulo;
         }       
     }
-    public int getAngle(){
+    public float getAngle(){
         return anguloII;
     }
     public void setAutoRect(Rectangle r){
@@ -58,7 +58,7 @@ public class Ruedas {
         Rectangle ruedaII = new Rectangle(autoRect.x-size[0], autoRect.y+autoRect.width+size[0], size[0], size[1]);
         Rectangle ruedaID = new Rectangle(autoRect.x+autoRect.width, autoRect.y+autoRect.width+size[0], size[0], size[1]);
         Rectangle[] ruedas = {ruedaSI, ruedaSD, ruedaII, ruedaID};
-        int[] angulos = {anguloSI, anguloSD, anguloII, anguloID};
+        float[] angulos = {anguloSI, anguloSD, anguloII, anguloID};
         for(int i = 0; i < 4; i++){
             tran.rotate(Math.toRadians(angulos[i]), ruedas[i].x + ruedas[i].width/2, ruedas[i].y + ruedas[i].height/2);
             g2d.setTransform(tran);

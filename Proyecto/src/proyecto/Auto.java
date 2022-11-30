@@ -24,9 +24,10 @@ public class Auto {
     float y = 0f;   
     private Ruedas ruedas;
     private float accel  = 0f; // aceleracion
-    private float[] velocidad = {0f, 0f};
+    private float velocidad = 0f;
     private float angle;
     private Rectangle2D.Float rect;
+    float magnitudAccel = 0.05f;
     
     public Auto(Rectangle rectAuto){
         
@@ -41,11 +42,10 @@ public class Auto {
     public void setAngle(float angle){
         this.angle = angle;
     }
-    public void Acelerar(boolean retroceso){
-        float magnitudAccel = 0.007f;
-        System.out.println("Auto acelerando");
-        System.out.println(angle);
-        if(!retroceso){
+    public void Acelerar(boolean enRetroceso){
+        
+        System.out.println("Auto acelerando: " + accel);
+        if(!enRetroceso){
             accel+=magnitudAccel;
         }else{
             accel-=magnitudAccel;
@@ -53,41 +53,35 @@ public class Auto {
         
         
     }
-    
+    public void Desacelerar(){
+        accel = 0;
+        System.out.println("Desacelerando: " + velocidad);
+        if(velocidad > 0){
+            // Para evitar que al desacelerar el auto se ponga en reversa en vez
+            // de detenerse.
+            velocidad = Math.max(velocidad-magnitudAccel, 0);
+        }else if(velocidad < 0){
+            velocidad = Math.min(velocidad+magnitudAccel, 0);
+        }
+       
+    }
     public void actualizaPosicion(){
-        float limiteDeVelocidad = 1f;
-        float limiteDeAccel = 0.2f;
+        float limiteDeVelocidad = 10f;
+        float limiteDeAccel = 1.5f;
         float roce = 0.5f;
-        System.out.println(accel);
+        // Se usara para asegurar que la fuerza de roce se oponga a la del
+        // movimiento
+        System.out.println(accel);     
         // Revisamos si la aceleracion sobrepasa el limite del auto y si es asi,
         // la aceleracion se queda en el valor limite en vez de seguir subiendo.
         // Se hara algo similar con la velocidad.
-        accel = acotaVariable(accel, limiteDeAccel);
-        // Velocidad eje x
-        velocidad[0] +=  accel*(float)Math.sin(Math.toRadians(angle));      
-        velocidad[0] = acotaVariable(velocidad[0], limiteDeVelocidad);
-        // Velocidad eje y
-        velocidad[1] -= accel*(float)Math.cos(Math.toRadians(angle));
-        velocidad[1] = acotaVariable(velocidad[1], limiteDeVelocidad);
-        rect.x += velocidad[0];  
-        
-        rect.y += velocidad[1];
-        // Manejo del roce de la pista contra el auto
-        
-        for(int i = 0; i < 2; i++){
-            if(velocidad[i]>0){
-                velocidad[i]-=roce;
-                if(velocidad[i] < 0){
-                    velocidad[i] = 0;
-                }
-            }else if(velocidad[i] < 0){
-                velocidad[i]+=roce;
-                if(velocidad[i] > 0){
-                    velocidad[i] = 0;
-                }
-            }
-        
-        }
+        accel = acotaVariable(accel, limiteDeAccel); 
+        velocidad += accel;
+        velocidad = acotaVariable(velocidad, limiteDeVelocidad);
+        // Movemos el auto:
+        rect.x += velocidad*(float)Math.sin(Math.toRadians(angle));
+        rect.y -= velocidad*(float)Math.cos(Math.toRadians(angle));
+        System.out.println("Velocidad: " + velocidad);
         ruedas.setAutoRect(new Rectangle((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height));
 
     }
@@ -142,7 +136,7 @@ public class Auto {
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
 */
     }
-    public void rotaRuedas(int angulo){
+    public void rotaRuedas(float angulo){
         ruedas.setAngulo(angulo, true, true, false, false);
     }
 
