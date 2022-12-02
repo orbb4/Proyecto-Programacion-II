@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 public class Juego extends JPanel{
     private Pista pista1;
+    private Pista2 pista2;
     private Ruedas ruedas;
     private Rectangle rect;
     private Auto auto;
@@ -20,14 +21,16 @@ public class Juego extends JPanel{
         //INSTANCIACIONES 
         rect = new Rectangle(600, 200, 40, 80);
         ruedas = new Ruedas(rect);
-        pista1= new Pista();
+        pista1= new Pista(0,0,0,0);
+        pista2= new Pista2();
         auto = new Auto(ruedas);
     }
     public void paint(Graphics g){       
         super.paint(g);
         this.setBackground(Color.GREEN);
         ruedas.paint(g);
-        pista1.paint(g, this);
+        //pista1.paint(g, 1, this);
+        pista2.paint(g, 2, this);
         auto.paint(g);
         Toolkit.getDefaultToolkit().sync(); //para la inestabilidad del framerate
         g.dispose();
