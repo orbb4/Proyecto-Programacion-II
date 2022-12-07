@@ -31,7 +31,8 @@ public class Juego extends JPanel implements KeyListener{
 
         auto = new Auto(rect);
         // Timer usado para actualizar la pantalla - aprox 60fps
-        Timer timer = new Timer (16, new ActionListener (){      
+        
+        Timer timer = new Timer (15, new ActionListener (){      
         public void actionPerformed(ActionEvent e)
             {
                 

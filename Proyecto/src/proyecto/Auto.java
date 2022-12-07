@@ -30,7 +30,10 @@ public class Auto {
     private float velocidad = 0f;
     private float angle;
     private Rectangle2D.Float rect;
-    float magnitudAccel = 0.05f;
+    // Valores ajustables:
+    private  float magnitudAccel = 0.05f;
+    private  float limiteDeVelocidad = 12f;
+    private  float limiteDeAccel = 0.5f;
     
     private ImageObserver obs;
     private Image img;
@@ -46,12 +49,23 @@ public class Auto {
         
         player.play(loc);
     }
+    public void setMagnitudAccel(float magnitudAccel){
+        this.magnitudAccel = magnitudAccel;
+    }
+    public void setLimiteDeVelocidad(float limiteDeVelocidad){
+        this.limiteDeVelocidad = limiteDeVelocidad;
+    }
+    public void setLimiteDeAccel(float limiteDeAccel){
+        this.limiteDeAccel = limiteDeAccel;
+    }
     public float getAngle(){
         return angle;
     }
+    
     public void setAngle(float angle){
         this.angle = angle;
     }
+    
     public void Acelerar(boolean enRetroceso){
         
         //System.out.println("Auto acelerando: " + accel);
@@ -66,9 +80,10 @@ public class Auto {
     public void Desacelerar(){
         accel = 0;
         //System.out.println("Desacelerando: " + velocidad);
+        // Para evitar que al desacelerar el auto se ponga en reversa en vez
+        // de detenerse.
         if(velocidad > 0){
-            // Para evitar que al desacelerar el auto se ponga en reversa en vez
-            // de detenerse.
+
             velocidad = Math.max(velocidad-magnitudAccel, 0);
         }else if(velocidad < 0){
             velocidad = Math.min(velocidad+magnitudAccel, 0);
@@ -76,8 +91,6 @@ public class Auto {
        
     }
     public void actualizaPosicion(){
-        float limiteDeVelocidad = 10f;
-        float limiteDeAccel = 1.5f;
         float roce = 0.5f;
         // Se usara para asegurar que la fuerza de roce se oponga a la del
         // movimiento
@@ -127,8 +140,8 @@ public class Auto {
         tran.rotate(Math.toRadians(angle), rect.x + 20, rect.y + 40);
         g2d.setTransform(tran);
         g.setColor(Color.red);
-        g2d.draw(rect);
-        g2d.fill(rect);
+        //g2d.draw(rect);
+        //g2d.fill(rect);
         g2d.drawImage(img, (int)rect.x, (int)rect.y, 40, 80, obs);
         ruedas.paint(g);
     }

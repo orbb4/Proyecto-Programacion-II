@@ -2,6 +2,7 @@ package proyecto;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.ImageObserver;
 import javax.swing.*;
 public class Ruedas {
     // Angulos de las ruedas. En grados.
@@ -9,10 +10,13 @@ public class Ruedas {
     private float anguloSD; // superior derecha
     private float anguloII; // inferior izquierda
     private float anguloID; // inferior derecha
+    private Image img = new ImageIcon(this.getClass().getResource("../images/Auto/rojo1.png")).getImage();
+    private ImageObserver obs;
     
     private Rectangle autoRect;
     // deberia tener como argumento una instancia de auto
     public Ruedas(Rectangle r){
+        img = new ImageIcon(this.getClass().getResource("../images/Auto/rueda.png")).getImage();
         autoRect = r;
         anguloSI = anguloSD = anguloII = anguloID = 0;
     }
@@ -62,8 +66,9 @@ public class Ruedas {
         for(int i = 0; i < 4; i++){
             tran.rotate(Math.toRadians(angulos[i]), ruedas[i].x + ruedas[i].width/2, ruedas[i].y + ruedas[i].height/2);
             g2d.setTransform(tran);
-            g2d.draw(ruedas[i]); 
-            g2d.fill(ruedas[i]);
+            //g2d.draw(ruedas[i]); 
+            //g2d.fill(ruedas[i]);
+            g2d.drawImage(img, (int)ruedas[i].x, (int)(int)ruedas[i].y, size[0], size[1], obs);
             tran.rotate(Math.toRadians(-angulos[i]), ruedas[i].x + ruedas[i].width/2, ruedas[i].y + ruedas[i].height/2);         
         }
         g2d.setTransform(tran);
