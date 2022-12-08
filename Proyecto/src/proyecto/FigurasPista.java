@@ -32,21 +32,14 @@ public class FigurasPista {
         curva4 = new ImageIcon(this.getClass().getResource("../images/curva4.png")).getImage();
     }
 
+
     public void setXY(int x, int y){
-        this.px = x;
-        this.py = y;
+        px = x;
+        py = y;
     }
-     public int getPX(){
-        return px;
-    }
-    public int getPY(){
-        return py;
-    }
-    public int getAX(){
-        return ax;
-    }
-    public int getLY(){
-        return ly;
+    public int[] getXY(){
+        int[] xy = {px, py};
+        return xy;
     }
     public void paint(Graphics g, int choice, JPanel panel){
         if(choice==1){
@@ -224,7 +217,7 @@ public class FigurasPista {
             
         }
         
-        if(choice==9){
+         if(choice==9){
             g.drawImage(vertical, px, py, ly, ax, panel);
         }
         if(choice==10){

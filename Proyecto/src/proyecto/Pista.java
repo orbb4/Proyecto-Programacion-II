@@ -87,14 +87,16 @@ public class Pista{
         p27 = new FigurasPista(520, 200, 80, 40);
     }
      
-     public void paint(Graphics g, int choice, JPanel panel){
+    /*public void paint(Graphics g, int choice, JPanel panel){
          //pista1(rectangular) con ciclo for:
          if(choice==0){
              for(int i=0; i<6; ++i){
                  //c1.get(i). setXY();
              
              }
-         }
+         }*/
+     public void paint(Graphics g, JPanel panel, int choice){
+         
         //Pista1(rectangular):
         if(choice==1){
             p1.paint(g, 1, panel);

@@ -3,15 +3,26 @@ import java.awt.*;
 import javax.swing.*;
 
 import java.awt.Color;
+import java.io.InputStream;
+import javax.sound.sampled.*;
+
 import javax.swing.JFrame;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Ventana extends JFrame {
     
-    private final Color COLOR_PANEL = new Color(50, 50, 160);
+private final Color COLOR_PANEL = new Color(50, 50, 160);
     private menuPrincipal menuPrincipal; // minusculas :(
     private Juego nuevoJuego;
     
+    //AUDIO
+    InputStream inputStream;
+    AudioInputStream audioStream;
+    AudioFormat audioFormat;
+    DataLine.Info info;
+    SourceDataLine sourceDataLine;
+    private static final int BUFFER_SIZE = 4096;
+            
     public Ventana(){
         super();
         
@@ -23,18 +34,19 @@ public class Ventana extends JFrame {
         this.setVisible(true); 
         this.setResizable(true);
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        
+            
         //INTEGRACION DE ELEMENTOS VARIOS
-        menuPrincipal = new menuPrincipal();
+        //menuPrincipal = new menuPrincipal();
         nuevoJuego = new Juego();
-        this.add(menuPrincipal);
+        //this.add(menuPrincipal);
         this.add(nuevoJuego);
+        this.addKeyListener(nuevoJuego);
         
         //CONFIGURACION DE ELEMENTOS
-        menuPrincipal.setBounds(0, 0, 1370, 700);
+        //menuPrincipal.setBounds(0, 0, 1370, 700);
         nuevoJuego.setBounds(0, 0, 1370, 700);
-        menuPrincipal.setVisible(false);
+        //menuPrincipal.setVisible(false);
         nuevoJuego.setVisible(true);
-
+        
    }        
 }         
