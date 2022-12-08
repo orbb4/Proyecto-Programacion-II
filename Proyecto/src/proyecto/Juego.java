@@ -9,7 +9,6 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import sliders.*;
 public class Juego extends JPanel implements KeyListener{
     private Pista pista1;
     private Ruedas ruedas;
@@ -17,8 +16,11 @@ public class Juego extends JPanel implements KeyListener{
     private Auto auto;
     private float angRuedasDelanteras = 0;
     // Barras de configuración
-    BarraDeAjuste barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad Máxima");
-    
+    BarraDeAjuste barraMaxVelocidad;
+    /* por implementar
+    BarraDeAjuste barraAceleracion = new BarraDeAjuste(new Rectangle(1000, 300, 300, 50), "Aceleración", );
+    BarraDeAjuste barraRoce = new BarraDeAjuste(new Rectangle(1000, 500, 300, 50), "Roce");
+    */
     // Teclas  - True equivale a que la tecla esta siendo presionada
     private boolean wDown = false;
     private boolean sDown = false;
@@ -36,6 +38,8 @@ public class Juego extends JPanel implements KeyListener{
         pista1= new Pista();
 
         auto = new Auto(rect);
+        // barras de ajuste:
+        barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad", auto.getLimiteDeVelocidad());
         // Timer usado para actualizar la pantalla - aprox 60fps
         
         Timer timer = new Timer (15, new ActionListener (){      
@@ -51,12 +55,15 @@ public class Juego extends JPanel implements KeyListener{
     public void paint(Graphics g){
         int maxAnguloRuedas = 16;
         float magnitudGiro = 2f;
-        boolean retroceso = true;
-        
+        boolean retroceso = true;       
         super.paint(g);
         this.setBackground(Color.GREEN);
         pista1.paint(g, this);
         barraMaxVelocidad.paint(g);
+        /* por implementar
+        barraAceleracion.paint(g);
+        barraRoce.paint(g);
+        */
         auto.paint(g);
         // ToDo: mover parte de este codigo dentro del timer del constructor
         if(wDown){
@@ -132,6 +139,16 @@ public class Juego extends JPanel implements KeyListener{
             case 'd':
                 dDown = false;
                 //angRuedasDelanteras = 0;
+                break;
+            case '+':
+                barraMaxVelocidad.aumentaAjuste();
+                auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
+                System.out.println("Variable ajustada: " + barraMaxVelocidad.getVariableAjustada());
+                break;
+            case '-':
+                barraMaxVelocidad.decrementaAjuste();
+                auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
+                System.out.println("Variable ajustada: " + barraMaxVelocidad.getVariableAjustada());
                 break;
         }
     }
