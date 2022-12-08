@@ -10,6 +10,8 @@ public class Ruedas {
     private float anguloSD; // superior derecha
     private float anguloII; // inferior izquierda
     private float anguloID; // inferior derecha
+    
+    //Sprites
     private Image img = new ImageIcon(this.getClass().getResource("../images/Auto/rojo1.png")).getImage();
     private ImageObserver obs;
     
@@ -66,8 +68,6 @@ public class Ruedas {
         for(int i = 0; i < 4; i++){
             tran.rotate(Math.toRadians(angulos[i]), ruedas[i].x + ruedas[i].width/2, ruedas[i].y + ruedas[i].height/2);
             g2d.setTransform(tran);
-            //g2d.draw(ruedas[i]); 
-            //g2d.fill(ruedas[i]);
             g2d.drawImage(img, (int)ruedas[i].x, (int)(int)ruedas[i].y, size[0], size[1], obs);
             tran.rotate(Math.toRadians(-angulos[i]), ruedas[i].x + ruedas[i].width/2, ruedas[i].y + ruedas[i].height/2);         
         }
