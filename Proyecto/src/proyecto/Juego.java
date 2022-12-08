@@ -104,27 +104,27 @@ public class Juego extends JPanel implements KeyListener{
         if(!(wDown || sDown)){
              auto.Desacelerar();
         }
-        if(!(wDown || sDown || aDown || dDown)){
-            //Restaura el ángulo de las ruedas automáticamente
-            if(auto.getVelocidad() > 0){
-                if(angRuedasDelanteras <= 0){
-                    angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
-                }
-                if(angRuedasDelanteras > 0){
-                    angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
-                }
-                auto.rotaRuedas(angRuedasDelanteras);
+
+        //Restaura el ángulo de las ruedas automáticamente
+        if(auto.getVelocidad() > 0){
+            if(angRuedasDelanteras <= 0){
+                angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
             }
-            if(auto.getVelocidad() < 0){
-                if(angRuedasDelanteras <= 0){
-                    angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
-                }
-                if(angRuedasDelanteras > 0){
-                    angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
-                }
-                auto.rotaRuedas(angRuedasDelanteras);
+            if(angRuedasDelanteras > 0){
+                angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
             }
+            auto.rotaRuedas(angRuedasDelanteras);
         }
+        if(auto.getVelocidad() < 0){
+            if(angRuedasDelanteras <= 0){
+                angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
+            }
+            if(angRuedasDelanteras > 0){
+                angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
+            }
+            auto.rotaRuedas(angRuedasDelanteras);
+        }
+        
         
         auto.actualizaPosicion();
         
