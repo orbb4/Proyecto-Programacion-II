@@ -156,7 +156,6 @@ public class Auto {
         Graphics2D g2d = (Graphics2D)g;
         AffineTransform tran = g2d.getTransform();
         tran.rotate(Math.toRadians(angle), rect.x + 20, rect.y + 40);
-        System.out.println(velocidad);
         g2d.setTransform(tran);
         g.setColor(Color.red);
         g2d.drawImage(img, (int)rect.x, (int)rect.y, 40, 80, obs);

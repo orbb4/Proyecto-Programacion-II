@@ -16,6 +16,7 @@ public class Juego extends JPanel implements KeyListener{
     private Rectangle rect;
     private Auto auto;
     private float angRuedasDelanteras = 0;
+    private Image trail_img;
     
     // Barras de configuración
     BarraDeAjuste barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad Máxima");
@@ -38,6 +39,9 @@ public class Juego extends JPanel implements KeyListener{
         pista1= new Pista();
         auto = new Auto(rect);
         
+        //ASIGNACIÓN DE IMAGENES
+        trail_img = new ImageIcon(this.getClass().getResource("../images/Auto/trail_01.png")).getImage();
+        trail_img.toString();
         // Timer usado para actualizar la pantalla - aprox 60fps        
         Timer timer = new Timer(15, new ActionListener(){      
         public void actionPerformed(ActionEvent e)
@@ -130,8 +134,8 @@ public class Juego extends JPanel implements KeyListener{
         char ch = ke.getKeyChar();
         switch(ch){
             case 'w':
-                 wDown = true;
-                 break;
+                wDown = true;
+                break;
             case 's':
                 sDown = true;
                 break;
