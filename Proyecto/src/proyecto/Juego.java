@@ -9,7 +9,8 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import sliders.*;
+//import sliders.*;
+import javax.swing.JSlider;
 public class Juego extends JPanel implements KeyListener{
     private Pista pista1;
     private Ruedas ruedas;
