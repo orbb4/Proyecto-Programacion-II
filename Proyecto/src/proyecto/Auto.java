@@ -30,14 +30,21 @@ public class Auto {
     private float velocidad = 0f;
     private float angle;
     private Rectangle2D.Float rect;
-    // Valores ajustables:
-    private  float magnitudAccel = 0.05f;
-    private  float limiteDeVelocidad = 12f;
-    private  float limiteDeAccel = 0.5f;
     
+    // Valores ajustables:
+    private float magnitudAccel = 0.05f;
+    private float limiteDeVelocidad = 12f;
+    private float limiteDeAccel = 0.5f;
+    
+    //Valores de ruedas
+    private float anguloRuedas = 0;
+    private float magnitudGiro = 0;
+    
+    // Sprites
     private ImageObserver obs;
     private Image img;
     
+    // Audio
     private AudioPlayer player;
     private String loc = "../audio/bgm/;).wav";
     
@@ -52,6 +59,12 @@ public class Auto {
     public float getLimiteDeVelocidad(){
         return limiteDeVelocidad;
     }
+    public float getAngle(){
+        return angle;
+    }
+    public float getVelocidad(){
+        return velocidad;
+    }
     
     public void setMagnitudAccel(float magnitudAccel){
         this.magnitudAccel = magnitudAccel;
@@ -62,14 +75,16 @@ public class Auto {
     public void setLimiteDeAccel(float limiteDeAccel){
         this.limiteDeAccel = limiteDeAccel;
     }
-    public float getAngle(){
-        return angle;
-    }
     
     public void setAngle(float angle){
         this.angle = angle;
     }
-    
+    public void SetAnguloRuedas(float angle){
+        anguloRuedas = angle;
+    }
+    public void SetMagnitudGiro(float m){
+        magnitudGiro = m;
+    }
     public void Acelerar(boolean enRetroceso){
         
         //System.out.println("Auto acelerando: " + accel);
@@ -110,7 +125,6 @@ public class Auto {
         rect.y -= velocidad*(float)Math.cos(Math.toRadians(angle));
         //System.out.println("Velocidad: " + velocidad);
         ruedas.setAutoRect(new Rectangle((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height));
-
     }
     /**
      * Revisa si una variable esta fuera de una cota dada (por izquierda o derecha)
@@ -144,8 +158,6 @@ public class Auto {
         tran.rotate(Math.toRadians(angle), rect.x + 20, rect.y + 40);
         g2d.setTransform(tran);
         g.setColor(Color.red);
-        //g2d.draw(rect);
-        //g2d.fill(rect);
         g2d.drawImage(img, (int)rect.x, (int)rect.y, 40, 80, obs);
         ruedas.paint(g);
     }
