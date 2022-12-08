@@ -7,13 +7,19 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import sliders.*;
 public class Juego extends JPanel implements KeyListener{
     private Pista pista1;
     private Ruedas ruedas;
     private Rectangle rect;
     private Auto auto;
     private float angRuedasDelanteras = 0;
-    // teclas (true equivale a que la tecla esta siendo presionada)
+    // Barras de configuración
+    BarraDeAjuste barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad Máxima");
+    
+    // Teclas  - True equivale a que la tecla esta siendo presionada
     private boolean wDown = false;
     private boolean sDown = false;
     private boolean aDown = false;
@@ -21,7 +27,7 @@ public class Juego extends JPanel implements KeyListener{
     
     
     public Juego(){
-        
+
         //CONFIGURACIONES INICIALES
         this.setFocusable(true);
         this.setLayout(null); 
@@ -39,6 +45,7 @@ public class Juego extends JPanel implements KeyListener{
                 repaint();
             }
         });
+
         timer.start();
     }
     public void paint(Graphics g){
@@ -49,6 +56,7 @@ public class Juego extends JPanel implements KeyListener{
         super.paint(g);
         this.setBackground(Color.GREEN);
         pista1.paint(g, this);
+        barraMaxVelocidad.paint(g);
         auto.paint(g);
         // ToDo: mover parte de este codigo dentro del timer del constructor
         if(wDown){
@@ -77,6 +85,7 @@ public class Juego extends JPanel implements KeyListener{
         }
         
         auto.actualizaPosicion();
+        
         
         
     }
@@ -126,5 +135,6 @@ public class Juego extends JPanel implements KeyListener{
                 break;
         }
     }
+    
 }
 

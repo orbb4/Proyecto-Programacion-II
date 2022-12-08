@@ -45,10 +45,14 @@ public class Auto {
         img = new ImageIcon(this.getClass().getResource("../images/Auto/rojo1.png")).getImage();
         ruedas = new Ruedas(new Rectangle(600, 200, 40 ,80));
         angle = 0f;
-        rect = new Rectangle2D.Float(600f, 200f, 40f, 80f);
-        
+        rect = new Rectangle2D.Float(600f, 200f, 40f, 80f);        
         player.play(loc);
     }
+    
+    public float getLimiteDeVelocidad(){
+        return limiteDeVelocidad;
+    }
+    
     public void setMagnitudAccel(float magnitudAccel){
         this.magnitudAccel = magnitudAccel;
     }

@@ -47,5 +47,6 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
         nuevoJuego.setBounds(0, 0, 1370, 700);
         //menuPrincipal.setVisible(false);
         nuevoJuego.setVisible(true);
+        
    }        
 }         
