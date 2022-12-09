@@ -8,94 +8,79 @@ public class Pista{
     private int x, y, ax, ly;
     private FigurasPista p1;
     private ArrayList<FigurasPista> c1;
-    private FigurasPista p2;
-    private FigurasPista p3;
-    private FigurasPista p4;
-    private FigurasPista p5;
-    private FigurasPista p6;
-    private FigurasPista p7;
-    
-    private FigurasPista p8;
-    
-    private FigurasPista p9;
-    private FigurasPista p10;
-    private FigurasPista p11;
-    private FigurasPista p12;
-    private FigurasPista p13;
-    private FigurasPista p14;
-    private FigurasPista p15;
-    private FigurasPista p16;
-    
-    private FigurasPista p17;
-    
-    private FigurasPista p18;
-    private FigurasPista p19;
-    private FigurasPista p20;
-    private FigurasPista p21;
-    private FigurasPista p22;
-    private FigurasPista p23;
-    
-    private FigurasPista p24;
-    private FigurasPista p25;
-    private FigurasPista p26;
-    private FigurasPista p27;
-    public Pista(int x, int y, int ax, int ly){  
-        this.x=x;
-        this.y=y;
+    public Pista(int ax, int ly){  
+        x=0;
+        y=0;
         this.ax=ax;
         this.ly=ly;
         c1 = new ArrayList();
-        /*p1 = new FigurasPista(x, y, ax, ly);
-        p2 = new FigurasPista(x, y, ax, ly);
-        p3 = new FigurasPista(x, y, ax, ly);
-        p4 = new FigurasPista(x, y, 80, 40);
-        p5 = new FigurasPista(x, y, 80, 40);
-        p6 = new FigurasPista(x, y, 80, 40);
-        p7 = new FigurasPista(x, y, 80, 40);
-        p8 = new FigurasPista(x, 100, 80, 40);
-        p9 = new FigurasPista(x, 180, 80, 40);
-        p10 = new FigurasPista(x, 260, 80, 40);*/
-        
         p1 = new FigurasPista(0, 200, 80, 40);
-        p2 = new FigurasPista(80, 200, 80, 40);
-        p3 = new FigurasPista(160, 200, 80, 40);
-        p4 = new FigurasPista(240, 200, 80, 40);
-        p5 = new FigurasPista(320, 200, 80, 40);
-        p6 = new FigurasPista(400, 200, 80, 40);
-        p7 = new FigurasPista(480, 200, 80, 40);
-        p8 = new FigurasPista(560, 200, 80, 40);
-        p9 = new FigurasPista(560+40, 280, 80, 40);
-        p10 = new FigurasPista(560+40, 360, 80, 40);
-        p11 = new FigurasPista(560+40, 440, 80, 40);
-        p12 = new FigurasPista(0, 280, 80, 40);
-        p13 = new FigurasPista(0, 360, 80, 40);
-        p14 = new FigurasPista(0, 440, 80, 40);
-        p15 = new FigurasPista(0, 520, 80, 40);
-        p16 = new FigurasPista(80, 560, 80, 40);
-        p17 = new FigurasPista(160, 560, 80, 40);
-        p18 = new FigurasPista(240, 560, 80, 40);
-        p19 = new FigurasPista(320, 560, 80, 40);
-        p20 = new FigurasPista(400, 560, 80, 40);
-        p21 = new FigurasPista(480, 560, 80, 40);
-        p22 = new FigurasPista(600, 520, 80, 40);
-        
-        p23 = new FigurasPista(160, 200-40, 80, 40);
-        p24 = new FigurasPista(160, 200-120, 80, 40);
-        
-        p25 = new FigurasPista(160+160+40, 200-40, 80, 40);
-        p26 = new FigurasPista(480-40, 200, 80, 40);
-        p27 = new FigurasPista(520, 200, 80, 40);
+
     }
      
-    /*public void paint(Graphics g, int choice, JPanel panel){
-         //pista1(rectangular) con ciclo for:
-         if(choice==0){
-             for(int i=0; i<6; ++i){
-                 //c1.get(i). setXY();
-             
-             }
-         }*/
-     public void paint(Graphics g, JPanel panel, int choice){
+    public void paint(Graphics g, int choice, JPanel panel){
+        //pista1(rectangular) con ciclo for:
+        if(choice==0){
+            y=200;
+            x=80;
+            int b = 280;
+            int c=280;
+            int a=80;
+            for(int i=0; i<22; ++i){
+                if(i<6){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x,200);
+                    c1.get(i).paint(g, 10, panel);
+                    x=x+80;
+                }
+                if(i>=6 && i<12){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(a,560);
+                    c1.get(i).paint(g, 10, panel);
+                    a=a+80;
+                    
+                }
+                if(i>=12 && i<15){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(600,b);
+                    c1.get(i).paint(g, 9, panel);
+                    b=b+80;
+                }
+                if(i>=15 && i<18){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(0,c);
+                    c1.get(i).paint(g, 9, panel);
+                    c=c+80;
+                    
+                }
+                if(i==18){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(0,200);
+                    c1.get(i).paint(g, 1, panel);
+                }
+                if(i==19){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(560,200);
+                    c1.get(i).paint(g, 3, panel);
+                }
+                if(i==20){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(0,520);
+                    c1.get(i).paint(g, 2, panel);
+                }
+               if(i==21){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(600,520);
+                    c1.get(i).paint(g, 4, panel);
+                }
+                
+                
+                
+            }
+                //c1.get(i).setXY();
+        }
+    }
+     /*public void paint(Graphics g, int choice,JPanel panel){
          
         //Pista1(rectangular):
         if(choice==1){
@@ -147,5 +132,5 @@ public class Pista{
             
         }
         
-    }
+    }*/
 }

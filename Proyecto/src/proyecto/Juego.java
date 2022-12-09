@@ -44,7 +44,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         
         //INSTANCIACIONES 
         rect = new Rectangle(600, 200, 40, 80);
-        pista1= new Pista(0,0,0,0);
+        pista1= new Pista(0,0);
         pista2= new Pista2();
         auto = new Auto(rect);
         // barras de ajuste:
@@ -71,9 +71,9 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         boolean retroceso = true;       
         super.paint(g);
         this.setBackground(Color.GREEN);
-        //pista1.paint(g, 1, this);
-        pista2.paint(g, 2, this);
-        pista1.paint(g, this, 1);
+        pista1.paint(g, 0, this);
+        //pista2.paint(g, 2, this);
+        pista1.paint(g, 1, this);
         barraMaxVelocidad.paint(g);
         barraAceleracion.paint(g);
         /* por implementar
