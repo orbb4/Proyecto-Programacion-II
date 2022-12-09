@@ -18,7 +18,6 @@ import javax.swing.JSlider;
 //public class Juego extends JPanel implements KeyListener{
 public class Juego extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
     private Pista pista1;
-    private Pista2 pista2;
     private Ruedas ruedas;
     private Rectangle rect;
     private Auto auto;
@@ -43,9 +42,8 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         this.setLayout(null); 
         
         //INSTANCIACIONES 
-        rect = new Rectangle(600, 200, 40, 80);
-        pista1= new Pista(0,0);
-        pista2= new Pista2();
+        rect = new Rectangle(600, 200, 40, 80); //40-80
+        pista1= new Pista(0, 0, 120, 60);
         auto = new Auto(rect);
         // barras de ajuste:
         barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad", auto.getLimiteDeVelocidad());

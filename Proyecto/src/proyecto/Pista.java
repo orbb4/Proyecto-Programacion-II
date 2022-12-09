@@ -8,105 +8,83 @@ public class Pista{
     private int x, y, ax, ly;
     private FigurasPista p1;
     private ArrayList<FigurasPista> c1;
-    public Pista(int ax, int ly){  
-        x=0;
-        y=0;
+    public Pista(int x, int y, int ax, int ly){  
+        /*x=0;
+        y=0;*/
+        this.x=x;
+        this.y=y;
         this.ax=ax;
         this.ly=ly;
         c1 = new ArrayList();
-        p1 = new FigurasPista(0, 200, 80, 40);
+        p1 = new FigurasPista(0, 0, ax, ly); //p1 = new FigurasPista(0, 0, 80, 40);
+
 
     }
-     
+    
     public void paint(Graphics g, int choice, JPanel panel){
         //pista1(rectangular) con ciclo for:
         if(choice==0){
-            y=200;
-            x=80;
-            int b = 280;
-            int c=280;
-            int a=80;
+            int d=x+2*ly;
+            int b= y+2*ly;
+            int c=y+2*ly;;
+            int a=x+2*ly;
             for(int i=0; i<22; ++i){
                 if(i<6){
                     c1.add(i, p1);
-                    c1.get(i).setXY(x,200);
+                    c1.get(i).setXY(d,y);
                     c1.get(i).paint(g, 10, panel);
-                    x=x+80;
+                    d=d+ax;
                 }
                 if(i>=6 && i<12){
                     c1.add(i, p1);
-                    c1.get(i).setXY(a,560);
+                    c1.get(i).setXY(a,y+3*ax+2*ly+ly);
                     c1.get(i).paint(g, 10, panel);
-                    a=a+80;
+                    a=a+ax;
                     
                 }
                 if(i>=12 && i<15){
                     c1.add(i, p1);
-                    c1.get(i).setXY(600,b);
+                    c1.get(i).setXY(x+6*ax+2*ly+ly,b);
                     c1.get(i).paint(g, 9, panel);
-                    b=b+80;
+                    b=b+ax;
                 }
                 if(i>=15 && i<18){
                     c1.add(i, p1);
-                    c1.get(i).setXY(0,c);
+                    c1.get(i).setXY(x,c);
                     c1.get(i).paint(g, 9, panel);
-                    c=c+80;
+                    c=c+ax;
                     
                 }
                 if(i==18){
                     c1.add(i, p1);
-                    c1.get(i).setXY(0,200);
+                    c1.get(i).setXY(x,y);
                     c1.get(i).paint(g, 1, panel);
                 }
                 if(i==19){
                     c1.add(i, p1);
-                    c1.get(i).setXY(560,200);
+                    c1.get(i).setXY(x+6*ax+2*ly,y);
                     c1.get(i).paint(g, 3, panel);
                 }
                 if(i==20){
                     c1.add(i, p1);
-                    c1.get(i).setXY(0,520);
+                    c1.get(i).setXY(x,y+3*ax+2*ly);
                     c1.get(i).paint(g, 2, panel);
                 }
                if(i==21){
                     c1.add(i, p1);
-                    c1.get(i).setXY(600,520);
+                    c1.get(i).setXY(x+6*ax+2*ly+ly,y+3*ax+2*ly);
                     c1.get(i).paint(g, 4, panel);
                 }
                 
-                
-                
             }
-                //c1.get(i).setXY();
+        
+        }
+        if(choice==1){
+        
         }
     }
      /*public void paint(Graphics g, int choice,JPanel panel){
          
-        //Pista1(rectangular):
-        if(choice==1){
-            p1.paint(g, 1, panel);
-            p2.paint(g, 10, panel);
-            p3.paint(g, 10, panel);
-            p4.paint(g, 10, panel);
-            p5.paint(g, 10, panel);
-            p6.paint(g, 10, panel);
-            p7.paint(g, 10, panel);
-            p8.paint(g, 3, panel);
-            p9.paint(g, 9, panel);
-            p10.paint(g, 9, panel);
-            p11.paint(g, 9, panel);
-            p12.paint(g, 9, panel);
-            p13.paint(g, 9, panel);
-            p14.paint(g, 9, panel);
-            p15.paint(g, 2, panel);
-            p16.paint(g, 10, panel);
-            p17.paint(g, 10, panel);
-            p18.paint(g, 10, panel);
-            p19.paint(g, 10, panel);
-            p20.paint(g, 10, panel);
-            p21.paint(g, 10, panel);
-            p22.paint(g, 4, panel);
-        }
         if(choice==2){
             p1.paint(g, 1, panel);
             p2.paint(g, 10, panel);
