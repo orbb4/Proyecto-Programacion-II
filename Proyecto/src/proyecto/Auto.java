@@ -32,8 +32,8 @@ public class Auto {
     private Rectangle2D.Float rect;
     
     // Valores ajustables:
-    private float magnitudAccel = 0.05f;
-    private float limiteDeVelocidad = 12f;
+    private float tasaDeCambioAccel = 0.05f; 
+    private float limiteDeVelocidad = 14f;
     private float limiteDeAccel = 0.5f;
     
     //Valores de ruedas
@@ -59,6 +59,9 @@ public class Auto {
     public float getLimiteDeVelocidad(){
         return limiteDeVelocidad;
     }
+    public float getLimiteDeAccel(){
+        return limiteDeAccel;
+    }
     public float getAngle(){
         return angle;
     }
@@ -66,9 +69,6 @@ public class Auto {
         return velocidad;
     }
     
-    public void setMagnitudAccel(float magnitudAccel){
-        this.magnitudAccel = magnitudAccel;
-    }
     public void setLimiteDeVelocidad(float limiteDeVelocidad){
         this.limiteDeVelocidad = limiteDeVelocidad;
     }
@@ -89,12 +89,10 @@ public class Auto {
         
         //System.out.println("Auto acelerando: " + accel);
         if(!enRetroceso){
-            accel+=magnitudAccel;
+            accel+=tasaDeCambioAccel;
         }else{
-            accel-=magnitudAccel;
-        }
-        
-        
+            accel-=tasaDeCambioAccel;
+        }       
     }
     public void Desacelerar(){
         accel = 0;
@@ -103,9 +101,9 @@ public class Auto {
         // de detenerse.
         if(velocidad > 0){
 
-            velocidad = Math.max(velocidad-magnitudAccel, 0);
+            velocidad = Math.max(velocidad-tasaDeCambioAccel, 0);
         }else if(velocidad < 0){
-            velocidad = Math.min(velocidad+magnitudAccel, 0);
+            velocidad = Math.min(velocidad+tasaDeCambioAccel, 0);
         }
        
     }
@@ -156,7 +154,6 @@ public class Auto {
         Graphics2D g2d = (Graphics2D)g;
         AffineTransform tran = g2d.getTransform();
         tran.rotate(Math.toRadians(angle), rect.x + 20, rect.y + 40);
-        System.out.println(velocidad);
         g2d.setTransform(tran);
         g.setColor(Color.red);
         g2d.drawImage(img, (int)rect.x, (int)rect.y, 40, 80, obs);
