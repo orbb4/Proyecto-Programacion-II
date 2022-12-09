@@ -32,8 +32,8 @@ public class Auto {
     private Rectangle2D.Float rect;
     
     // Valores ajustables:
-    private float magnitudAccel = 0.05f;
-    private float limiteDeVelocidad = 12f;
+    private float tasaDeCambioAccel = 0.05f; 
+    private float limiteDeVelocidad = 14f;
     private float limiteDeAccel = 0.5f;
     
     //Valores de ruedas
@@ -59,6 +59,9 @@ public class Auto {
     public float getLimiteDeVelocidad(){
         return limiteDeVelocidad;
     }
+    public float getLimiteDeAccel(){
+        return limiteDeAccel;
+    }
     public float getAngle(){
         return angle;
     }
@@ -66,9 +69,6 @@ public class Auto {
         return velocidad;
     }
     
-    public void setMagnitudAccel(float magnitudAccel){
-        this.magnitudAccel = magnitudAccel;
-    }
     public void setLimiteDeVelocidad(float limiteDeVelocidad){
         this.limiteDeVelocidad = limiteDeVelocidad;
     }
@@ -89,12 +89,10 @@ public class Auto {
         
         //System.out.println("Auto acelerando: " + accel);
         if(!enRetroceso){
-            accel+=magnitudAccel;
+            accel+=tasaDeCambioAccel;
         }else{
-            accel-=magnitudAccel;
-        }
-        
-        
+            accel-=tasaDeCambioAccel;
+        }       
     }
     public void Desacelerar(){
         accel = 0;
@@ -103,9 +101,9 @@ public class Auto {
         // de detenerse.
         if(velocidad > 0){
 
-            velocidad = Math.max(velocidad-magnitudAccel, 0);
+            velocidad = Math.max(velocidad-tasaDeCambioAccel, 0);
         }else if(velocidad < 0){
-            velocidad = Math.min(velocidad+magnitudAccel, 0);
+            velocidad = Math.min(velocidad+tasaDeCambioAccel, 0);
         }
        
     }

@@ -6,10 +6,13 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-public class Juego extends JPanel implements KeyListener{
+public class Juego extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
     private Pista pista1;
     private Ruedas ruedas;
     private Rectangle rect;
@@ -19,10 +22,8 @@ public class Juego extends JPanel implements KeyListener{
     
     // Barras de configuración
     BarraDeAjuste barraMaxVelocidad;
-    /* por implementar
-    BarraDeAjuste barraAceleracion = new BarraDeAjuste(new Rectangle(1000, 300, 300, 50), "Aceleración", );
-    BarraDeAjuste barraRoce = new BarraDeAjuste(new Rectangle(1000, 500, 300, 50), "Roce");
-    */
+    BarraDeAjuste barraAceleracion;
+    //BarraDeAjuste barraRoce = new BarraDeAjuste(new Rectangle(1000, 500, 300, 50), "Roce");
     // Teclas  - True equivale a que la tecla esta siendo presionada
     private boolean wDown = false;
     private boolean sDown = false;
@@ -42,8 +43,9 @@ public class Juego extends JPanel implements KeyListener{
         auto = new Auto(rect);
         // barras de ajuste:
         barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad", auto.getLimiteDeVelocidad());
-        // Timer usado para actualizar la pantalla - aprox 60fps
-        
+        barraAceleracion = new BarraDeAjuste(new Rectangle(1000, 200, 300, 50), "Aceleración", auto.getLimiteDeAccel());
+        auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
+        auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
         //ASIGNACIÓN DE IMAGENES
         trail_img = new ImageIcon(this.getClass().getResource("../images/Auto/trail_01.png")).getImage();
         trail_img.toString();
@@ -51,7 +53,6 @@ public class Juego extends JPanel implements KeyListener{
         Timer timer = new Timer(15, new ActionListener(){      
         public void actionPerformed(ActionEvent e)
             {
-                
                 repaint();
             }
         });
@@ -66,6 +67,7 @@ public class Juego extends JPanel implements KeyListener{
         this.setBackground(Color.GREEN);
         pista1.paint(g, this);
         barraMaxVelocidad.paint(g);
+        barraAceleracion.paint(g);
         /* por implementar
         barraAceleracion.paint(g);
         barraRoce.paint(g);
@@ -156,7 +158,6 @@ public class Juego extends JPanel implements KeyListener{
         }
 
     }
-
     @Override
     public void keyReleased(KeyEvent ke) {
         char ch = ke.getKeyChar();
@@ -169,23 +170,60 @@ public class Juego extends JPanel implements KeyListener{
                 break;
             case 'a':
                 aDown = false;
-                //angRuedasDelanteras = 0;
                 break;
             case 'd':
                 dDown = false;
-                //angRuedasDelanteras = 0;
-                break;
-            case '+':
-                barraMaxVelocidad.aumentaAjuste();
-                auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
-                System.out.println("Variable ajustada: " + barraMaxVelocidad.getVariableAjustada());
-                break;
-            case '-':
-                barraMaxVelocidad.decrementaAjuste();
-                auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
-                System.out.println("Variable ajustada: " + barraMaxVelocidad.getVariableAjustada());
                 break;
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int[] mouseCords = {e.getX(), e.getY()};
+        barraAceleracion.actualizar(mouseCords, true);
+        barraMaxVelocidad.actualizar(mouseCords, true);
+        
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+       
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        
+    }
+    public int[] getMouseCords(MouseEvent e){
+        int[] mouseCords = {e.getX(), e.getY()};
+
+        return mouseCords;
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        int[] mouseCords = {e.getX(), e.getY()};
+        barraAceleracion.actualizar(mouseCords, false);
+        barraMaxVelocidad.actualizar(mouseCords, false);
+        auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
+        auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
     }
     
 }
