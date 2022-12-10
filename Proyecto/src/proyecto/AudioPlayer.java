@@ -7,6 +7,7 @@ package proyecto;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
 import javax.sound.sampled.*;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -18,12 +19,13 @@ import javax.swing.SwingUtilities;
 public class AudioPlayer{
 
     boolean isPlaybackCompleted;
-    
     public static void play(String ubi){
         
         // getAudioInputStream() also accepts a File or InputStream
         try{
-            InputStream in = AudioPlayer.class.getClassLoader().getResourceAsStream("j");
+            
+            InputStream in = AudioSystem.getAudioInputStream(AudioPlayer.class.getResource("m.wav"));
+            //InputStream in = new FileInputStream("C:\\Users\\renat\\Desktop\\ProyectoPrograII\\Proyecto-Programacion-II\\Proyecto\\m.wav");
             System.out.println(in);
             Clip clip = AudioSystem.getClip();
             AudioInputStream ais = AudioSystem.getAudioInputStream(in);
