@@ -1,92 +1,300 @@
 package proyecto;
 import java.awt.*;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class Pista{
+    private int x, y, ax, ly;
     private FigurasPista p1;
-    
-    private FigurasPista p2;
-    private FigurasPista p3;
-    private FigurasPista p4;
-    private FigurasPista p5;
-    private FigurasPista p6;
-    private FigurasPista p7;
-    
-    private FigurasPista p8;
-    
-    private FigurasPista p9;
-    private FigurasPista p10;
-    private FigurasPista p11;
-    private FigurasPista p12;
-    private FigurasPista p13;
-    private FigurasPista p14;
-    private FigurasPista p15;
-    private FigurasPista p16;
-    
-    private FigurasPista p17;
-    
-    private FigurasPista p18;
-    private FigurasPista p19;
-    private FigurasPista p20;
-    private FigurasPista p21;
-    private FigurasPista p22;
-    private FigurasPista p23;
-    
-    private FigurasPista p24;
-    
-    public Pista(){        
-        p1 = new FigurasPista(0, 100, 80, 40);
-        p2 = new FigurasPista(80, 100, 80, 40);
-        p3 = new FigurasPista(160, 100, 80, 40);
-        p4 = new FigurasPista(240, 100, 80, 40);
-        p5 = new FigurasPista(320, 100, 80, 40);
-        p6 = new FigurasPista(400, 100, 80, 40);
-        p7 = new FigurasPista(480, 100, 80, 40);
-        p8 = new FigurasPista(560, 100, 80, 40);
-        p9 = new FigurasPista(560+40, 180, 80, 40);
-        p10 = new FigurasPista(560+40, 260, 80, 40);
-        p11 = new FigurasPista(560+40, 340, 80, 40);
-        p12 = new FigurasPista(0, 180, 80, 40);
-        p13 = new FigurasPista(0, 260, 80, 40);
-        p14 = new FigurasPista(0, 340, 80, 40);
-        p15 = new FigurasPista(0, 420, 80, 40);
-        p16 = new FigurasPista(80, 460, 80, 40);
-        p17 = new FigurasPista(160, 460, 80, 40);
-        p18 = new FigurasPista(240, 460, 80, 40);
-        p19 = new FigurasPista(320, 460, 80, 40);
-        p20 = new FigurasPista(400, 460, 80, 40);
-        p21 = new FigurasPista(480, 460, 80, 40);
-        p22 = new FigurasPista(600, 420, 80, 40);
+    private ArrayList<FigurasPista> c1;
+    public Pista(int x, int y, int ly){  
+        /*x=0;
+        y=0;*/
+        this.x=x;
+        this.y=y;
+        ax=2*ly;
+        this.ly=ly;
+        c1 = new ArrayList();
+        p1 = new FigurasPista(0, 0, ly); //p1 = new FigurasPista(0, 0, 80, 40);
+ 
+
     }
-     
-     public void paint(Graphics g, JPanel panel){
-         
-        //Pista1(rectangular):
-        p1.paint(g, 1, panel);
-        p2.paint(g, 10, panel);
-        p3.paint(g, 10, panel);
-        p4.paint(g, 10, panel);
-        p5.paint(g, 10, panel);
-        p6.paint(g, 10, panel);
-        p7.paint(g, 10, panel);
-        p8.paint(g, 3, panel);
-        p9.paint(g, 9, panel);
-        p10.paint(g, 9, panel);
-        p11.paint(g, 9, panel);
-        p12.paint(g, 9, panel);
-        p13.paint(g, 9, panel);
-        p14.paint(g, 9, panel);
-        p15.paint(g, 2, panel);
-        p16.paint(g, 10, panel);
-        p17.paint(g, 10, panel);
-        p18.paint(g, 10, panel);
-        p19.paint(g, 10, panel);
-        p20.paint(g, 10, panel);
-        p21.paint(g, 10, panel);
-        p22.paint(g, 4, panel);
+    
+    public void paint(Graphics g, int choice, JPanel panel){
+        //pista1(rectangular) con ciclo for:
+        if(choice==0){
+            int d=x+2*ly;
+            int b= y+2*ly;
+            int c=y+2*ly;;
+            int a=x+2*ly;
+            for(int i=0; i<18; ++i){
+                if(i<4){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(d,y);
+                    c1.get(i).paint(g, 10, panel);
+                    d=d+ax;
+                }
+                if(i>=4 && i<8){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(a,y+2*ax+2*ly+ly);
+                    c1.get(i).paint(g, 10, panel);
+                    a=a+ax;
+                    
+                }
+                if(i>=8 && i<10){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x+4*ax+2*ly+ly,b);
+                    c1.get(i).paint(g, 9, panel);
+                    b=b+ax;
+                }
+                if(i>=10 && i<12){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x,c);
+                    c1.get(i).paint(g, 9, panel);
+                    c=c+ax;
+                    
+                }
+                if(i==12){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x,y);
+                    c1.get(i).paint(g, 1, panel);
+                }
+                if(i==13){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x+4*ax+2*ly,y);
+                    c1.get(i).paint(g, 3, panel);
+                }
+                if(i==14){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x,y+2*ax+2*ly);
+                    c1.get(i).paint(g, 2, panel);
+                }
+               if(i==15){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x+4*ax+2*ly+ly,y+2*ax+2*ly);
+                    c1.get(i).paint(g, 4, panel);
+                }
+            }  
+        }
+        if(choice==1){
+            for(int i=0; i<12; ++i){
+                if(i==0){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x+3*ly,y);
+                    c1.get(i).paint(g, 6, panel);
+                }
+                if(i==1){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+3*ly,y+2*ly);
+                   c1.get(i).paint(g, 4, panel);
+                   
+                }
+                if(i==2){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+3*ly);
+                   c1.get(i).paint(g, 1, panel);
+                }
+                if(i==3){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+5*ly);
+                   c1.get(i).paint(g, 9, panel);
+                
+                }
+                if(i==4){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+7*ly);
+                   c1.get(i).paint(g, 2, panel);
+                
+                }
+                if(i==5){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+3*ly,y+7*ly);
+                   c1.get(i).paint(g, 4, panel);
+                
+                }
+                if(i==6){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+3*ly,y+5*ly);
+                   c1.get(i).paint(g, 6, panel);
+                
+                }
+                if(i==7){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+8*ly,y+7*ly);
+                   c1.get(i).paint(g, 2, panel);
+                
+                }
+                if(i==8){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+11*ly,y+7*ly);
+                   c1.get(i).paint(g, 4, panel);
+                
+                }
+                if(i==9){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+11*ly,y+5*ly);
+                   c1.get(i).paint(g, 9, panel);
+                
+                }
+                if(i==10){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+10*ly,y+3*ly);
+                   c1.get(i).paint(g, 3, panel);
+                
+                }
+                if(i==11){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+8*ly,y+2*ly);
+                   c1.get(i).paint(g, 2, panel);
+                
+                }
+            
+            }   
+        }
         
+        if(choice==2){
+            for(int i=0; i<10; ++i){
+                if(i==0){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x+5*ly,y);
+                    c1.get(i).paint(g, 13, panel);
+                }
+                if(i==1){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+6*ly,y+5*ly);
+                   c1.get(i).paint(g, 13, panel);
+                   
+                }
+                if(i==2){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+3*ly);
+                   c1.get(i).paint(g, 7, panel);
+                }
+                if(i==3){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+10*ly,y);
+                   c1.get(i).paint(g, 8, panel);
+                
+                }
+                if(i==4){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+2*ly,y+3*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==5){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+2*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==6){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+8*ly,y+5*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==7){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+4*ly,y+8*ly);
+                   c1.get(i).paint(g, 12, panel);
+                
+                }
+                if(i==8){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+8*ly,y);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==9){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+7*ly,y);
+                   c1.get(i).paint(g, 12, panel);   
+                }          
+            }   
+        }
         
-        
+        if(choice==3){
+            for(int i=0; i<14; ++i){
+                if(i==0){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x,y);
+                    c1.get(i).paint(g, 14, panel);
+                }
+                if(i==1){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+3*ly,y+2*ly);
+                   c1.get(i).paint(g, 11, panel);
+                   
+                }
+                if(i==2){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+3*ly,y+3*ly);
+                   c1.get(i).paint(g, 15, panel);
+                }
+                if(i==3){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+6*ly,y+ly);
+                   c1.get(i).paint(g, 14, panel);
+                
+                }
+                if(i==4){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+9*ly,y+3*ly);
+                   c1.get(i).paint(g, 16, panel);
+                
+                }
+                if(i==5){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+11*ly,y+7*ly);
+                   c1.get(i).paint(g, 4, panel);
+                
+                }
+                if(i==6){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+2*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==7){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+4*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==8){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+6*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==9){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+8*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);   
+                }       
+                if(i==10){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+7*ly);
+                   c1.get(i).paint(g, 2, panel);   
+                } 
+                if(i==11){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+2*ly);
+                   c1.get(i).paint(g, 9, panel);   
+                } 
+                if(i==12){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+4*ly);
+                   c1.get(i).paint(g, 9, panel);   
+                } 
+                if(i==13){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+6*ly);
+                   c1.get(i).paint(g, 11, panel);   
+                } 
+            }   
+        }
     }
 }

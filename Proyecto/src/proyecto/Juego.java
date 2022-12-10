@@ -12,8 +12,15 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+//import sliders.*;
+import javax.swing.JSlider;
+
+//public class Juego extends JPanel implements KeyListener{
 public class Juego extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
+    private Pista pista0;
     private Pista pista1;
+    private Pista pista2;
+    private Pista pista3;
     private Ruedas ruedas;
     private Rectangle rect;
     private Auto auto;
@@ -38,8 +45,11 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         this.setLayout(null); 
         
         //INSTANCIACIONES 
-        rect = new Rectangle(600, 200, 40, 80);
-        pista1= new Pista();
+        rect = new Rectangle(600, 200, 40, 80); //40-80
+        pista0= new Pista(2, 50, 78);
+        pista1= new Pista(0, 0, 78);
+        pista2= new Pista(0, 0, 78);
+        pista3= new Pista(0, 0, 78);
         auto = new Auto(rect);
         // barras de ajuste:
         barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad", auto.getLimiteDeVelocidad());
@@ -65,7 +75,10 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         boolean retroceso = true;       
         super.paint(g);
         this.setBackground(Color.GREEN);
-        pista1.paint(g, this);
+        //pista0.paint(g, 0, this);
+        //pista1.paint(g, 1, this);
+        //pista2.paint(g, 2, this);
+        //pista3.paint(g, 3, this);
         barraMaxVelocidad.paint(g);
         barraAceleracion.paint(g);
         /* por implementar
@@ -73,10 +86,6 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         barraRoce.paint(g);
         */
         auto.paint(g);
-        
-        //Le da valores de sus ruedas a auto
-        auto.SetAnguloRuedas(angRuedasDelanteras);
-        auto.SetMagnitudGiro(magnitudGiro);
         
         // ToDo: mover parte de este codigo dentro del timer del constructor
         if(wDown){

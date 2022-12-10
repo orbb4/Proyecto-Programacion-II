@@ -46,8 +46,9 @@ public class Auto {
     
     public Auto(Rectangle rectAuto){
         img = new ImageIcon(this.getClass().getResource("../images/Auto/rojo1.png")).getImage();
-        ruedas = new Ruedas(new Rectangle(600, 200, 40 ,80));
+        ruedas = new Ruedas(new Rectangle(600, 200, 20, 40)); //40-80
         angle = 0f;
+
         rect = new Rectangle2D.Float(600f, 200f, 40f, 80f);        
     }
     
@@ -151,7 +152,7 @@ public class Auto {
         tran.rotate(Math.toRadians(angle), rect.x + 20, rect.y + 40);
         g2d.setTransform(tran);
         g.setColor(Color.red);
-        g2d.drawImage(img, (int)rect.x, (int)rect.y, 40, 80, obs);
+        g2d.drawImage(img, (int)rect.x, (int)rect.y, 20, 40, obs); //40-80
         ruedas.paint(g);
     }
 }
