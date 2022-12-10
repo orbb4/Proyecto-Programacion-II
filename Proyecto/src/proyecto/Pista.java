@@ -214,5 +214,87 @@ public class Pista{
                 }          
             }   
         }
+        
+        if(choice==3){
+            for(int i=0; i<14; ++i){
+                if(i==0){
+                    c1.add(i, p1);
+                    c1.get(i).setXY(x,y);
+                    c1.get(i).paint(g, 14, panel);
+                }
+                if(i==1){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+3*ly,y+2*ly);
+                   c1.get(i).paint(g, 11, panel);
+                   
+                }
+                if(i==2){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+3*ly,y+3*ly);
+                   c1.get(i).paint(g, 15, panel);
+                }
+                if(i==3){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+6*ly,y+ly);
+                   c1.get(i).paint(g, 14, panel);
+                
+                }
+                if(i==4){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+9*ly,y+3*ly);
+                   c1.get(i).paint(g, 16, panel);
+                
+                }
+                if(i==5){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+11*ly,y+7*ly);
+                   c1.get(i).paint(g, 4, panel);
+                
+                }
+                if(i==6){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+2*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==7){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+4*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==8){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+6*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);
+                
+                }
+                if(i==9){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x+8*ly,y+8*ly);
+                   c1.get(i).paint(g, 10, panel);   
+                }       
+                if(i==10){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+7*ly);
+                   c1.get(i).paint(g, 2, panel);   
+                } 
+                if(i==11){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+2*ly);
+                   c1.get(i).paint(g, 9, panel);   
+                } 
+                if(i==12){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+4*ly);
+                   c1.get(i).paint(g, 9, panel);   
+                } 
+                if(i==13){
+                   c1.add(i, p1);
+                   c1.get(i).setXY(x,y+6*ly);
+                   c1.get(i).paint(g, 11, panel);   
+                } 
+            }   
+        }
     }
 }

@@ -161,5 +161,39 @@ public class FigurasPista {
             g.drawImage(curva4, px, py+3*ly, ly, ly, panel);
             g.drawImage(horizontal, px-ly, py+3*ly, ly, ly, panel);
         }
+        
+        if(choice==14){
+            //1:
+            g.drawImage(curva1, px, py, ly, ly, panel);
+            g.drawImage(vertical, px, py+ly, ly, ly, panel);
+            g.drawImage(horizontal, px+ly, py, ly, ly, panel);
+            //3:
+            g.drawImage(horizontal, px+2*ly, py, ly, ly, panel);
+            g.drawImage(curva2, px+3*ly, py, ly, ly, panel);
+            g.drawImage(vertical, px+3*ly, py+ly, ly, ly, panel);  
+        }
+        
+        if(choice==15){
+            //2:
+            g.drawImage(vertical, px, py, ly, ly, panel);
+            g.drawImage(curva3, px, py+ly, ly, ly, panel);
+            g.drawImage(horizontal, px+ly, py+ly, ly, ly, panel);
+            //4:
+            g.drawImage(vertical, px+3*ly, py, ly, ly, panel);
+            g.drawImage(curva4, px+3*ly, py+ly, ly, ly, panel);
+            g.drawImage(horizontal, px+2*ly, py+ly, ly, ly, panel);
+        }
+        
+        if(choice==16){
+            //2:
+            g.drawImage(vertical, px, py, ly, ly, panel);
+            g.drawImage(curva3, px, py+ly, ly, ly, panel);
+            g.drawImage(horizontal, px+ly, py+ly, ly, ly, panel);
+            //curva3:
+            g.drawImage(curva2, px+2*ly, py+ly, ly, ly, panel);
+            //9:
+            g.drawImage(vertical, px+2*ly, py+2*ly, ly, ly, panel);
+            g.drawImage(vertical, px+2*ly, py+3*ly, ly, ly, panel);
+        }
     }
 }
