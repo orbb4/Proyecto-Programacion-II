@@ -28,6 +28,7 @@ public class Auto {
     private Ruedas ruedas;
     private float accel  = 0f; // aceleracion
     private float velocidad = 0f;
+    private float[][] ultimasPosiciones = {{0,0}, {0,0}};
     private float angle;
     private Rectangle2D.Float rect;
     
@@ -49,7 +50,11 @@ public class Auto {
         ruedas = new Ruedas(new Rectangle(600, 200, 20, 40)); //40-80
         angle = 0f;
 
-        rect = new Rectangle2D.Float(600f, 200f, 20f, 40f);        
+        rect = new Rectangle2D.Float(600f, 200f, 20f, 40f);    
+        ultimasPosiciones[0][0] = rect.x;
+        ultimasPosiciones[0][1] = rect.y;
+        ultimasPosiciones[1][0] = rect.x;
+        ultimasPosiciones[1][1] = rect.y;
     }
     
     public float getLimiteDeVelocidad(){
@@ -90,8 +95,21 @@ public class Auto {
             accel-=tasaDeCambioAccel;
         }       
     }
+    private void ultimasPosicionesUpdate(){
+        ultimasPosiciones[0][0] = ultimasPosiciones[1][0];
+        ultimasPosiciones[0][1] = ultimasPosiciones[1][1];
+        
+        ultimasPosiciones[1][0] = rect.x;
+        ultimasPosiciones[1][1] = rect.y;
+    }
+    
     public void colisiona(){
-        accel*=-1;
+        velocidad*=-0.5;
+        System.out.println("El auto colisionó.");
+        rect.x = ultimasPosiciones[0][0];
+        rect.y = ultimasPosiciones[0][1];
+        ultimasPosicionesUpdate();
+        
     }
     public void Desacelerar(){
         accel = 0;
@@ -122,6 +140,8 @@ public class Auto {
         rect.y -= velocidad*(float)Math.cos(Math.toRadians(angle));
         //System.out.println("Velocidad: " + velocidad);
         ruedas.setAutoRect(new Rectangle((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height));
+        // dejamos guardadas las ultimas posiciones que tomó el auto:
+        ultimasPosicionesUpdate();
     }
     /**
      * Revisa si una variable esta fuera de una cota dada (por izquierda o derecha)
