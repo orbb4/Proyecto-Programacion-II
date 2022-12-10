@@ -211,6 +211,8 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         int[] mouseCords = {e.getX(), e.getY()};
         barraAceleracion.actualizar(mouseCords, true);
         barraMaxVelocidad.actualizar(mouseCords, true);
+        auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
+        auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
         
         
     }
