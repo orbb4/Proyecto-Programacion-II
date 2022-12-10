@@ -40,6 +40,7 @@ public class Ruedas {
         if(cambiaSI){
             anguloSI = angulo;
         }
+        
         if(cambiaSD){
             anguloSD = angulo;
         }

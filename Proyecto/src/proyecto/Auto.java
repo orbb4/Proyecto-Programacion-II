@@ -49,7 +49,7 @@ public class Auto {
         ruedas = new Ruedas(new Rectangle(600, 200, 20, 40)); //40-80
         angle = 0f;
 
-        rect = new Rectangle2D.Float(600f, 200f, 40f, 80f);        
+        rect = new Rectangle2D.Float(600f, 200f, 20f, 40f);        
     }
     
     public float getLimiteDeVelocidad(){

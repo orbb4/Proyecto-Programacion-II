@@ -46,7 +46,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         this.setLayout(null); 
         
         //INSTANCIACIONES 
-        rect = new Rectangle(600, 200, 40, 80); //40-80
+        rect = new Rectangle(600, 200, 20, 40); //40-80
         pista0= new Pista(2, 50, 78);
         pista1= new Pista(0, 0, 78);
         pista2= new Pista(0, 0, 78);
@@ -125,7 +125,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         if(!(wDown || sDown)){
              auto.Desacelerar();
         }
-        System.out.println(angRuedasDelanteras);
+        //System.out.println(angRuedasDelanteras);
         if(aDown==false && dDown==false){
             //Restaura el ángulo de las ruedas automáticamente
             if(auto.getVelocidad() > 0){
