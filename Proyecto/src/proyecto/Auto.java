@@ -44,16 +44,11 @@ public class Auto {
     private ImageObserver obs;
     private Image img;
     
-    // Audio
-    private AudioPlayer player;
-    private String loc = "../audio/bgm/;).wav";
-    
     public Auto(Rectangle rectAuto){
         img = new ImageIcon(this.getClass().getResource("../images/Auto/rojo1.png")).getImage();
         ruedas = new Ruedas(new Rectangle(600, 200, 40 ,80));
         angle = 0f;
         rect = new Rectangle2D.Float(600f, 200f, 40f, 80f);        
-        player.play(loc);
     }
     
     public float getLimiteDeVelocidad(){

@@ -22,6 +22,8 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
     DataLine.Info info;
     SourceDataLine sourceDataLine;
     private static final int BUFFER_SIZE = 4096;
+    private AudioPlayer player;
+    private String loc = "../audio/bgm/m.wav";
             
     public Ventana(){
         super();
@@ -48,6 +50,6 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
         nuevoJuego.setBounds(0, 0, 1370, 700);
         //menuPrincipal.setVisible(false);
         nuevoJuego.setVisible(true);
-        
+        player.play(loc);
    }        
 }         

@@ -80,10 +80,6 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         
         // ToDo: mover parte de este codigo dentro del timer del constructor
         if(wDown){
-            if(angRuedasDelanteras <= 0){
-                angRuedasDelanteras+=magnitudGiro;
-            }            
-            auto.rotaRuedas(angRuedasDelanteras);
             auto.Acelerar(!retroceso);
         }
         if(sDown){
@@ -106,27 +102,28 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         if(!(wDown || sDown)){
              auto.Desacelerar();
         }
-
-        //Restaura el ángulo de las ruedas automáticamente
-        if(auto.getVelocidad() > 0){
-            if(angRuedasDelanteras <= 0){
-                angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
+        System.out.println(angRuedasDelanteras);
+        if(aDown==false && dDown==false){
+            //Restaura el ángulo de las ruedas automáticamente
+            if(auto.getVelocidad() > 0){
+                if(angRuedasDelanteras < 0){
+                    angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
+                }
+                if(angRuedasDelanteras > 0){
+                    angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
+                }
+                auto.rotaRuedas(angRuedasDelanteras);
             }
-            if(angRuedasDelanteras > 0){
-                angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
+            if(auto.getVelocidad() < 0){
+                if(angRuedasDelanteras < 0){
+                    angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
+                }
+                if(angRuedasDelanteras > 0){
+                    angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
+                }
+                auto.rotaRuedas(angRuedasDelanteras);
             }
-            auto.rotaRuedas(angRuedasDelanteras);
-        }
-        if(auto.getVelocidad() < 0){
-            if(angRuedasDelanteras <= 0){
-                angRuedasDelanteras-=(auto.getVelocidad()/magnitudGiro);
-            }
-            if(angRuedasDelanteras > 0){
-                angRuedasDelanteras+=(auto.getVelocidad()/magnitudGiro);
-            }
-            auto.rotaRuedas(angRuedasDelanteras);
-        }
-        
+        }        
         
         auto.actualizaPosicion();
         
