@@ -105,7 +105,7 @@ public class FigurasPista {
             
             //union:
             g.drawImage(vertical, px, py+2*ly, ly, ly, panel);
-            g.drawImage(vertical, px, py+2*ly + ly, ly, ly, panel);
+            g.drawImage(vertical, px, py+3*ly + ly, ly, ly, panel);
             //2:
             g.drawImage(vertical, px, py+ly + ly*2, ly, ly, panel);
             g.drawImage(curva3, px, py+(4*ly)+ly, ly, ly, panel);
@@ -141,6 +141,25 @@ public class FigurasPista {
             //g.drawImage(horizontal, px, py, ax, ly, panel);
             g.drawImage(horizontal, px, py, ly, ly, panel);
             g.drawImage(horizontal, px+ly, py, ly, ly, panel);
+        }
+        //cuadrado vertical:
+        if(choice==11){
+            g.drawImage(vertical, px, py, ly, ly, panel);
+        }
+        //cuadrado horizontal:
+        if(choice==12){
+            g.drawImage(horizontal, px, py, ly, ly, panel);
+        }
+        //forma de serpiente:
+        if(choice==13){
+            //1:
+            g.drawImage(curva1, px, py, ly, ly, panel);
+            g.drawImage(vertical, px, py+ly, ly, ly, panel);
+            g.drawImage(horizontal, px+ly, py, ly, ly, panel);
+            //4:
+            g.drawImage(vertical, px, py+2*ly, ly, ly, panel);
+            g.drawImage(curva4, px, py+3*ly, ly, ly, panel);
+            g.drawImage(horizontal, px-ly, py+3*ly, ly, ly, panel);
         }
     }
 }
