@@ -8,6 +8,9 @@ public class Pista{
     private int x, y, ax, ly;
     private FigurasPista p1;
     private ArrayList<FigurasPista> c1;
+    private ArrayList<Rectangle> colliders;
+    private int ANCHO_CIRCUITO = 1370;
+    private int LARGO_CIRCUITO = 700;
     public Pista(int x, int y, int ly){  
         /*x=0;
         y=0;*/
@@ -17,8 +20,20 @@ public class Pista{
         this.ly=ly;
         c1 = new ArrayList();
         p1 = new FigurasPista(0, 0, ly); //p1 = new FigurasPista(0, 0, 80, 40);
- 
-
+        /*
+        // Límite superior de la pista
+        colliders.add(new Rectangle(0, 0, ANCHO_CIRCUITO, 10));
+        // Límite inferior de la pista
+        colliders.add(new Rectangle(0, LARGO_CIRCUITO, ANCHO_CIRCUITO, 10)); 
+        // Límite lateral izquierdo de la pista
+        colliders.add(new Rectangle(0, 0, 10, LARGO_CIRCUITO)); 
+        // Límite lateral derecho de la pista
+        colliders.add(new Rectangle(ANCHO_CIRCUITO, 0, 10, LARGO_CIRCUITO)); 
+        */
+    }
+    
+    public ArrayList<Rectangle> getColliders(){
+        return colliders;
     }
     
     public void paint(Graphics g, int choice, JPanel panel){

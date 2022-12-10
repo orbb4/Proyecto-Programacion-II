@@ -37,7 +37,7 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
             
         //INTEGRACION DE ELEMENTOS VARIOS
         //menuPrincipal = new menuPrincipal();
-        nuevoJuego = new Juego();
+        nuevoJuego = new Juego(2);
         //this.add(menuPrincipal);
         this.add(nuevoJuego);
         this.addKeyListener(nuevoJuego);

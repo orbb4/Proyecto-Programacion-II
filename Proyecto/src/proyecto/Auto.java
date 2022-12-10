@@ -94,6 +94,9 @@ public class Auto {
             accel-=tasaDeCambioAccel;
         }       
     }
+    public void colisiona(){
+        accel*=-1;
+    }
     public void Desacelerar(){
         accel = 0;
         //System.out.println("Desacelerando: " + velocidad);

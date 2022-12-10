@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -21,12 +22,13 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
     private Pista pista1;
     private Pista pista2;
     private Pista pista3;
+    private Pista pistaElegida;
     private Ruedas ruedas;
     private Rectangle rect;
     private Auto auto;
     private float angRuedasDelanteras = 0;
     private Image trail_img;
-    
+    private int numPistaElegida;
     // Barras de configuración
     BarraDeAjuste barraMaxVelocidad;
     BarraDeAjuste barraAceleracion;
@@ -37,9 +39,8 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
     private boolean aDown = false;
     private boolean dDown = false;
     
-    
-    public Juego(){
-
+    public Juego(int numPistaElegida){
+        
         //CONFIGURACIONES INICIALES
         this.setFocusable(true);
         this.setLayout(null); 
@@ -51,9 +52,25 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         pista2= new Pista(0, 0, 78);
         pista3= new Pista(0, 0, 78);
         auto = new Auto(rect);
+        
+        this.numPistaElegida = numPistaElegida;
+        switch(numPistaElegida){
+            case 0:
+                pistaElegida = pista0;
+                break;
+            case 1:
+                pistaElegida = pista1;
+                break;
+            case 2:
+                pistaElegida = pista2;
+                break;
+            case 3:
+                pistaElegida = pista3;
+                break;  
+        }
         // barras de ajuste:
-        barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1000, 100, 300, 50), "Velocidad", auto.getLimiteDeVelocidad());
-        barraAceleracion = new BarraDeAjuste(new Rectangle(1000, 200, 300, 50), "Aceleración", auto.getLimiteDeAccel());
+        barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1070, 50, 245, 40), "Velocidad", auto.getLimiteDeVelocidad());
+        barraAceleracion = new BarraDeAjuste(new Rectangle(1070, 150, 245, 40), "Aceleración", auto.getLimiteDeAccel());
         auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
         auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
         //ASIGNACIÓN DE IMAGENES
@@ -74,11 +91,8 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         float magnitudGiro = 2f;
         boolean retroceso = true;       
         super.paint(g);
-        this.setBackground(Color.GREEN);
-        //pista0.paint(g, 0, this);
-        //pista1.paint(g, 1, this);
-        //pista2.paint(g, 2, this);
-        //pista3.paint(g, 3, this);
+        this.setBackground(new Color(130, 235, 40));
+        pistaElegida.paint(g, numPistaElegida, this);
         barraMaxVelocidad.paint(g);
         barraAceleracion.paint(g);
         /* por implementar
