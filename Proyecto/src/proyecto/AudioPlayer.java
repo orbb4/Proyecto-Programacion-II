@@ -4,13 +4,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.net.URL;
+import java.io.*;
 import javax.sound.sampled.*;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
+
 
 /**
  *
@@ -18,24 +14,15 @@ import javax.swing.SwingUtilities;
  */
 public class AudioPlayer{
 
-    boolean isPlaybackCompleted;
-    public static void play(String ubi){
-        
-        // getAudioInputStream() also accepts a File or InputStream
+    public void play(String ubi){
         try{
-            
-            InputStream in = AudioSystem.getAudioInputStream(AudioPlayer.class.getResource("m.wav"));
-            //InputStream in = new FileInputStream("C:\\Users\\renat\\Desktop\\ProyectoPrograII\\Proyecto-Programacion-II\\Proyecto\\m.wav");
-            System.out.println(in);
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(in);
-            clip.open(ais);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-            SwingUtilities.invokeLater(() -> {
-            // A GUI element to prevent the Clip's daemon Thread
-            // from terminating at the end of the main()
-            JOptionPane.showMessageDialog(null, "Close to exit!");
-            });
+            File f=new File("m.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(f);
+            AudioFormat audioFormat = audioStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
+            Clip c = (Clip) AudioSystem.getLine(info);
+            c.open(audioStream);
+            c.start();
         }
         catch(Exception e){
             System.out.println(e);

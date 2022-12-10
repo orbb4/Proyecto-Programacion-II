@@ -38,6 +38,7 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
             
         //INTEGRACION DE ELEMENTOS VARIOS
+        player = new AudioPlayer();
         //menuPrincipal = new menuPrincipal();
         nuevoJuego = new Juego(2);
         //this.add(menuPrincipal);
