@@ -42,7 +42,7 @@ public class BarraDeAjuste {
         this.variableAjustada = variableAjustada;
         rectBarritas = new Rectangle(barraRect.x+bordesX*2, barraRect.y+bordesY, anchoBarritas, barraRect.height-bordesY*4);
         espacioEntreBarras = (barraRect.width - 2*bordesX - numDeBarritas*anchoBarritas)/numDeBarritas;
-        System.out.println(espacioEntreBarras);
+        //System.out.println(espacioEntreBarras);
         // triangulos dibujados a los lados
         // izquierdo
         triangulo1.addPoint(barraRect.x-barraRect.height/4, barraRect.y);
@@ -59,11 +59,11 @@ public class BarraDeAjuste {
      * @return la variable ajustada segun lo 'llena' que esté la barra
      */
     public float getVariableAjustada(){
-        System.out.println("encendidas: " + barritasEncendidas + "num barritas:" + numDeBarritas);
-        System.out.println("Valor original: " + variableAjustada);
+        //System.out.println("encendidas: " + barritasEncendidas + "num barritas:" + numDeBarritas);
+        //System.out.println("Valor original: " + variableAjustada);
         float ratio = ((float)barritasEncendidas/(float)numDeBarritas);
-        System.out.println("ratio " +ratio);
-        System.out.println(variableAjustada*ratio);
+        //System.out.println("ratio " +ratio);
+        //System.out.println(variableAjustada*ratio);
         return (float)variableAjustada*ratio;
     }
     public void aumentaAjuste(){
