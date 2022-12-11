@@ -37,10 +37,30 @@ public class Pista{
     
     public ArrayList<Rectangle> getColliders(int tipoPista){
         ArrayList<Rectangle> collidersCurvas = new ArrayList();
+        float anchoBordeSoleras = (ly/17)*2;
         collidersCurvas.addAll(colliders);
         switch(tipoPista){
             case 0:
+                //curva SI:
+                colliders.add(new Rectangle(x, y,(int)anchoBordeSoleras, ly));
+                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                colliders.add(new Rectangle(x+15*(ly/17), y+15*(ly/17),(int)anchoBordeSoleras, (int)anchoBordeSoleras));
+               
+                //curva II:
+                colliders.add(new Rectangle(x, y+2*ax+2*ly+ly,(int)anchoBordeSoleras, ly));
+                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+2*ax+2*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                colliders.add(new Rectangle(x+15*(ly/17), y,(int)anchoBordeSoleras, (int)anchoBordeSoleras));
                 
+                //curva SD:
+                colliders.add(new Rectangle(x+4*ax+2*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
+                colliders.add(new Rectangle(x+4*ax+2*ly+ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                colliders.add(new Rectangle(x+4*ax+2*ly+ly, y+15*(ly/17),(int)anchoBordeSoleras, (int)anchoBordeSoleras));
+                
+                //curva ID:
+                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+6*ly+ly,(int)anchoBordeSoleras, ly));
+                colliders.add(new Rectangle(x+11*ly, y+6*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                colliders.add(new Rectangle(x+11*ly, y+6*ly+ly,(int)anchoBordeSoleras, (int)anchoBordeSoleras));
+                break;
         }
         return colliders;
         
