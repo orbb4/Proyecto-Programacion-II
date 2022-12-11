@@ -30,9 +30,11 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
     private Image trail_img;
     private int numPistaElegida;
     private ArrayList<Rectangle> colliders;
+    private Toolkit t;
     // Barras de configuración
     BarraDeAjuste barraMaxVelocidad;
     BarraDeAjuste barraAceleracion;
+    BarraDeAjuste barraTipoPista;
     //BarraDeAjuste barraRoce = new BarraDeAjuste(new Rectangle(1000, 500, 300, 50), "Roce");
     // Teclas  - True equivale a que la tecla esta siendo presionada
     private boolean wDown = false;
@@ -53,7 +55,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         pista2= new Pista(0, 0, 78);
         pista3= new Pista(0, 0, 78);
         auto = new Auto(rect);
-        
+        t = Toolkit.getDefaultToolkit(); 
         this.numPistaElegida = numPistaElegida;
         
         switch(numPistaElegida){
@@ -71,8 +73,9 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
                 break;  
         }
         // barras de ajuste:
-        barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1070, 50, 245, 40), "Velocidad", auto.getLimiteDeVelocidad());
-        barraAceleracion = new BarraDeAjuste(new Rectangle(1070, 150, 245, 40), "Aceleración", auto.getLimiteDeAccel());
+        barraMaxVelocidad = new BarraDeAjuste(new Rectangle(1065, 50, 245, 40), "Velocidad", auto.getLimiteDeVelocidad(), 12);
+        barraAceleracion = new BarraDeAjuste(new Rectangle(1065, 150, 245, 40), "Aceleración", auto.getLimiteDeAccel(), 12);
+        barraTipoPista = new BarraDeAjuste(new Rectangle(1065, 250, 245, 40), "Tipo Pista", numPistaElegida, 4);
         auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
         auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
         //ASIGNACIÓN DE IMAGENES
@@ -82,7 +85,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         Timer timer = new Timer(15, new ActionListener(){      
         public void actionPerformed(ActionEvent e)
             {
-                for(Rectangle collider: pistaElegida.getColliders()){
+                for(Rectangle collider: pistaElegida.getColliders(numPistaElegida)){
                     if(auto.getRect().getBounds2D().intersects(collider)){
                         auto.colisiona();
                         break;
@@ -101,13 +104,14 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         boolean retroceso = true;       
         super.paint(g);
         this.setBackground(new Color(130, 235, 40));
+        g.setColor(new Color(40, 40, 40));
+        g.fillRect(990, 0, 400, 755);
+        g.setColor(Color.WHITE);
+        g.fillRect(990, 0, 10, 800);
         pistaElegida.paint(g, numPistaElegida, this);
         barraMaxVelocidad.paint(g);
         barraAceleracion.paint(g);
-        /* por implementar
-        barraAceleracion.paint(g);
-        barraRoce.paint(g);
-        */
+        barraTipoPista.paint(g);
         auto.paint(g);
         
         // ToDo: mover parte de este codigo dentro del timer del constructor
@@ -211,8 +215,27 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         int[] mouseCords = {e.getX(), e.getY()};
         barraAceleracion.actualizar(mouseCords, true);
         barraMaxVelocidad.actualizar(mouseCords, true);
+        barraTipoPista.actualizar(mouseCords, true);
         auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
         auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
+        numPistaElegida = barraTipoPista.numBarrasEncendidas();
+                switch(numPistaElegida){
+            case 0:
+                pistaElegida = pista0;
+                break;
+            case 1:
+                pistaElegida = pista0;
+                break;
+            case 2:
+                pistaElegida = pista1;
+                break;
+            case 3:
+                pistaElegida = pista2;
+                break;  
+            case 4:
+                pistaElegida = pista3;
+                break;  
+        }
         
         
     }
@@ -253,6 +276,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         int[] mouseCords = {e.getX(), e.getY()};
         barraAceleracion.actualizar(mouseCords, false);
         barraMaxVelocidad.actualizar(mouseCords, false);
+        barraTipoPista.actualizar(mouseCords, false);
         auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
         auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
     }

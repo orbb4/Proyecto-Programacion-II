@@ -13,14 +13,14 @@ public class BarraDeAjuste {
     Polygon triangulo2 = new Polygon();
     boolean triangulo1Clicked = false;
     boolean triangulo2Clicked = false;
-    private int numDeBarritas = 12;
-    private int anchoBarritas = 18;
+    private int numDeBarritas;
+    private int anchoBarritas;
     private int bordesX = 5;
     private int bordesY = 5;   
-    private int espacioEntreBarras;   
+    private int espacioEntreBarras = 1;   
     // Ajustes
     private String nombreDelAjuste;
-    private int barritasEncendidas = numDeBarritas/2; // barra parte con la mitad "encendida"
+    private int barritasEncendidas; // barra parte con la mitad "encendida"
     private float variableAjustada;
     // Colores!
     // degrade de las barritas
@@ -34,14 +34,17 @@ public class BarraDeAjuste {
      * @param nombreDelAjuste nombre que tendrá la configuracion
      * @param variableAjustada la variable que será ajustada por la barra
      */
-    public BarraDeAjuste(Rectangle barraRect, String nombreDelAjuste, float variableAjustada){
-        
+    public BarraDeAjuste(Rectangle barraRect, String nombreDelAjuste, float variableAjustada, int numBarras){
+        numDeBarritas = numBarras;
+        barritasEncendidas = numDeBarritas/2;
         assert numDeBarritas <= 12: "Numero de Barritas en barra '" +  nombreDelAjuste + " excede el límite (12)";
         this.barraRect = barraRect;
         this.nombreDelAjuste = nombreDelAjuste;
         this.variableAjustada = variableAjustada;
+        anchoBarritas = (barraRect.width - espacioEntreBarras*numBarras - bordesX*2)/numBarras;
         rectBarritas = new Rectangle(barraRect.x+bordesX*2, barraRect.y+bordesY, anchoBarritas, barraRect.height-bordesY*4);
-        espacioEntreBarras = (barraRect.width - 2*bordesX - numDeBarritas*anchoBarritas)/numDeBarritas;
+        //espacioEntreBarras = (barraRect.width - 2*bordesX - numDeBarritas*anchoBarritas)/numDeBarritas;
+        System.out.println(espacioEntreBarras);
         //System.out.println(espacioEntreBarras);
         // triangulos dibujados a los lados
         // izquierdo
@@ -58,6 +61,9 @@ public class BarraDeAjuste {
      * 
      * @return la variable ajustada segun lo 'llena' que esté la barra
      */
+    public int numBarrasEncendidas(){
+        return barritasEncendidas;
+    }
     public float getVariableAjustada(){
         float ratio = ((float)barritasEncendidas/(float)numDeBarritas);
         return (float)variableAjustada*ratio;
@@ -80,7 +86,7 @@ public class BarraDeAjuste {
      */
     public void actualizar(int[] mouseCords, boolean clicking){
         Rectangle mouse = new Rectangle(mouseCords[0], mouseCords[1], 1, 1);
-        // revisamos si hay colision con triangulos, colision y click altera
+        // revisamos si hay colision con triangulos. Colision y click altera
         // las barras, solo colision crea un borde blanco alrededor de ellas
         if((mouseCords[0] <= triangulo1.getBounds2D().getMaxX()) && (mouseCords[1] <= triangulo1.getBounds2D().getMaxY() + triangulo1.getBounds().getHeight()/2) && (mouseCords[0] >= triangulo1.getBounds2D().getMaxX()- triangulo1.getBounds2D().getWidth()) && (mouseCords[1] > triangulo1.getBounds2D().getMaxY() -  triangulo1.getBounds2D().getHeight())){
             triangulo1Clicked=true;
