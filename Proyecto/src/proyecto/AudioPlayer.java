@@ -14,9 +14,13 @@ import javax.sound.sampled.*;
  */
 public class AudioPlayer{
 
+    /**
+     * Reproduce el audio ubicado en la dirección dada
+     *@param La ubicación del audio 
+    */
     public void play(String ubi){
         try{
-            File f=new File(".\\src\\audio\\bgm\\m.wav");
+            File f=new File(ubi);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(f);
             AudioFormat audioFormat = audioStream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
