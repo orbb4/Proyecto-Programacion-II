@@ -50,17 +50,47 @@ public class Pista{
                 colliders.add(new Rectangle(x, y+2*ax+2*ly+ly,(int)anchoBordeSoleras, ly));
                 colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+2*ax+2*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //colliders.add(new Rectangle(x+15*(ly/17), y,(int)anchoBordeSoleras, (int)anchoBordeSoleras));
+ 
                 
                 //curva SD:
-                colliders.add(new Rectangle(x+4*ax+2*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
+                colliders.add(new Rectangle(x+4*ax+2*ly+ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
                 colliders.add(new Rectangle(x+4*ax+2*ly+ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
-                colliders.add(new Rectangle(x+4*ax+2*ly+ly, y+15*(ly/17),(int)anchoBordeSoleras, (int)anchoBordeSoleras));
                 
                 //curva ID:
                 colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+6*ly+ly,(int)anchoBordeSoleras, ly));
                 colliders.add(new Rectangle(x+11*ly, y+6*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //colliders.add(new Rectangle(x+11*ly, y+6*ly+ly,(int)anchoBordeSoleras, (int)anchoBordeSoleras));
+            case 1:
+                
                 break;
+                
+            case 2:
+                //curva SI1:
+                
+                //curva SI2:
+                
+                //curva SI3:
+                
+                //curva SI4:
+                
+                //curva SD1:
+                
+                //curva SD2:
+                
+                //curva SD3:
+                
+                
+                //curva SD4:
+                
+                
+                break;
+                
+            case 3:
+                
+                break;
+            
+            
+           
         }
         System.out.println(colliders.size());
         return colliders;
