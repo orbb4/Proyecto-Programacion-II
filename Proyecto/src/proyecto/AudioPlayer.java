@@ -16,7 +16,7 @@ public class AudioPlayer{
 
     public void play(String ubi){
         try{
-            File f=new File("m.wav");
+            File f=new File(".\\src\\audio\\bgm\\m.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(f);
             AudioFormat audioFormat = audioStream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
