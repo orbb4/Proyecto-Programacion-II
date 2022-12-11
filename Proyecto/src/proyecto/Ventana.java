@@ -40,7 +40,7 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
         //INTEGRACION DE ELEMENTOS VARIOS
         player = new AudioPlayer();
         //menuPrincipal = new menuPrincipal();
-        nuevoJuego = new Juego(2);
+        nuevoJuego = new Juego(1);
         //this.add(menuPrincipal);
         this.add(nuevoJuego);
         this.addKeyListener(nuevoJuego);
@@ -49,7 +49,7 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
         //CONFIGURACION DE ELEMENTOS
         //menuPrincipal.setBounds(0, 0, 1370, 700);
         nuevoJuego.setBounds(0, 0, 1370, 700);
-        //menuPrincipal.setVisible(false);
+        //menuPrincipal.setVisible(true);
         nuevoJuego.setVisible(true);
         player.play(loc);
    }        
