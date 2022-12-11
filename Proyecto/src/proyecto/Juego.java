@@ -224,15 +224,12 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
                 pistaElegida = pista0;
                 break;
             case 1:
-                pistaElegida = pista0;
-                break;
-            case 2:
                 pistaElegida = pista1;
                 break;
-            case 3:
+            case 2:
                 pistaElegida = pista2;
                 break;  
-            case 4:
+            case 3:
                 pistaElegida = pista3;
                 break;  
         }
