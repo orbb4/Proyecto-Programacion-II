@@ -85,12 +85,11 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         Timer timer = new Timer(15, new ActionListener(){      
         public void actionPerformed(ActionEvent e)
             {
-                for(Rectangle collider: pistaElegida.getColliders(numPistaElegida)){
+                for(Rectangle collider: pistaElegida.getColliders( barraTipoPista.numBarrasEncendidas())){
                     if(auto.getRect().getBounds2D().intersects(collider)){
                         auto.colisiona();
                         break;
-                    }
-                    
+                    }                   
                 }
                 repaint();         
             }
@@ -218,6 +217,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         barraTipoPista.actualizar(mouseCords, true);
         auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
         auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
+        System.out.println(numPistaElegida);
         numPistaElegida = barraTipoPista.numBarrasEncendidas();
                 switch(numPistaElegida){
             case 0:
@@ -276,6 +276,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         barraTipoPista.actualizar(mouseCords, false);
         auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
         auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
+        
     }
     
 }
