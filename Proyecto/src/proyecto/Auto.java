@@ -86,6 +86,10 @@ public class Auto {
     public void SetMagnitudGiro(float m){
         magnitudGiro = m;
     }
+    /**
+     * Dado un booleano, acelera o desacelera el vehículo
+     * @param enRetroceso Verdadero si el auto debe retroceder, falso si no.
+    */
     public void Acelerar(boolean enRetroceso){
         
         //System.out.println("Auto acelerando: " + accel);
@@ -111,6 +115,9 @@ public class Auto {
         ultimasPosicionesUpdate();
         
     }
+    /**
+     * Desacelera el vehículo    
+    */
     public void Desacelerar(){
         accel = 0;
         //System.out.println("Desacelerando: " + velocidad);
@@ -124,6 +131,9 @@ public class Auto {
         }
        
     }
+    /**
+     * Actualiza la posición del vehículo
+     */
     public void actualizaPosicion(){
         float roce = 0.5f;
         // Se usara para asegurar que la fuerza de roce se oponga a la del
@@ -165,6 +175,10 @@ public class Auto {
     public Rectangle2D.Float getRect(){
         return rect;
     }
+    /**
+     * Rota las ruedas según un ángulo dado
+     * @param angulo el ángulo usado para rotar
+     */
     public void rotaRuedas(float angulo){
         ruedas.setAngulo(angulo, true, true, false, false);
     }
