@@ -23,19 +23,15 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
     private Pista pista2;
     private Pista pista3;
     private Pista pistaElegida;
-    private Ruedas ruedas;
     private Rectangle rect;
     private Auto auto;
     private float angRuedasDelanteras = 0;
-    private Image trail_img;
     private int numPistaElegida;
-    private ArrayList<Rectangle> colliders;
-    private Toolkit t;
     // Barras de configuración
     BarraDeAjuste barraMaxVelocidad;
     BarraDeAjuste barraAceleracion;
     BarraDeAjuste barraTipoPista;
-    //BarraDeAjuste barraRoce = new BarraDeAjuste(new Rectangle(1000, 500, 300, 50), "Roce");
+
     // Teclas  - True equivale a que la tecla esta siendo presionada
     private boolean wDown = false;
     private boolean sDown = false;
@@ -55,7 +51,6 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         pista2= new Pista(0, 0, 78);
         pista3= new Pista(0, 0, 78);
         auto = new Auto(rect);
-        t = Toolkit.getDefaultToolkit(); 
         this.numPistaElegida = numPistaElegida;
         
         switch(numPistaElegida){
@@ -78,9 +73,6 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         barraTipoPista = new BarraDeAjuste(new Rectangle(1065, 250, 245, 40), "Tipo Pista", numPistaElegida, 4);
         auto.setLimiteDeVelocidad(barraMaxVelocidad.getVariableAjustada());
         auto.setLimiteDeAccel(barraAceleracion.getVariableAjustada());
-        //ASIGNACIÓN DE IMAGENES
-        trail_img = new ImageIcon(this.getClass().getResource("../images/Auto/trail_01.png")).getImage();
-        trail_img.toString();
         // Timer usado para actualizar la pantalla - aprox 60fps        
         Timer timer = new Timer(15, new ActionListener(){      
         public void actionPerformed(ActionEvent e)

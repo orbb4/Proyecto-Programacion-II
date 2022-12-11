@@ -12,16 +12,9 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Ventana extends JFrame {
     
 private final Color COLOR_PANEL = new Color(50, 50, 160);
-    private menuPrincipal menuPrincipal; // minusculas :(
     private Juego nuevoJuego;
     
     //AUDIO
-    InputStream inputStream;
-    AudioInputStream audioStream;
-    AudioFormat audioFormat;
-    DataLine.Info info;
-    SourceDataLine sourceDataLine;
-    private static final int BUFFER_SIZE = 4096;
     private AudioPlayer player;
     private String loc = "m.wav";
             
@@ -39,17 +32,13 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
             
         //INTEGRACION DE ELEMENTOS VARIOS
         player = new AudioPlayer();
-        //menuPrincipal = new menuPrincipal();
         nuevoJuego = new Juego(2);
-        //this.add(menuPrincipal);
         this.add(nuevoJuego);
         this.addKeyListener(nuevoJuego);
         this.addMouseListener(nuevoJuego);
         this.addMouseMotionListener(nuevoJuego);
         //CONFIGURACION DE ELEMENTOS
-        //menuPrincipal.setBounds(0, 0, 1370, 700);
         nuevoJuego.setBounds(0, 0, 1370, 700);
-        //menuPrincipal.setVisible(false);
         nuevoJuego.setVisible(true);
         player.play(loc);
    }        
