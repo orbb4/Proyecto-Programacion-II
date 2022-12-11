@@ -23,7 +23,7 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
     SourceDataLine sourceDataLine;
     private static final int BUFFER_SIZE = 4096;
     private AudioPlayer player;
-    private String loc = "../audio/bgm/m.wav";
+    private String loc = ".\\src\\audio\\bgm\\m.wav";
             
     public Ventana(){
         super();
