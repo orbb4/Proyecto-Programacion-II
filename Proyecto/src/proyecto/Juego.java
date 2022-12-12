@@ -15,7 +15,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 //import sliders.*;
 import javax.swing.JSlider;
-
+/**
+ * El panel principal del juego: lo que verá el usuario durante la partida
+ * 
+ */
 //public class Juego extends JPanel implements KeyListener{
 public class Juego extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
     private Pista pista0;
@@ -37,9 +40,12 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
     private boolean sDown = false;
     private boolean aDown = false;
     private boolean dDown = false;
-    
+    /**
+     * El constructor del Juego.
+     * @param numPistaElegida un número entre 0 y 3 que decidirá la pista a 
+     * generar
+     */
     public Juego(int numPistaElegida){
-        
         //CONFIGURACIONES INICIALES
         this.setFocusable(true);
         this.setLayout(null); 
@@ -104,8 +110,6 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         barraAceleracion.paint(g);
         barraTipoPista.paint(g);
         auto.paint(g);
-        
-        // ToDo: mover parte de este codigo dentro del timer del constructor
         if(wDown){
             auto.Acelerar(!retroceso);
         }

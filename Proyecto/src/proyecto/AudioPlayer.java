@@ -1,22 +1,17 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyecto;
 import java.io.*;
 import javax.sound.sampled.*;
 
 
 /**
- *
+ * Un reproductor de audio
  * @author bas_b
  */
 public class AudioPlayer{
 
     /**
      * Reproduce el audio ubicado en la dirección dada
-     *@param La ubicación del audio 
+     *@param ubi ubicación del archivo a reproducir
     */
     public void play(String ubi){
         try{

@@ -1,9 +1,10 @@
 package proyecto;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-/** Una barra que puede ser ajustada para establecer el valor de una variable
- * 
-*/
+/**
+ * Una barra que puede ser ajustada para establecer el valor de una variable
+ * @author renat
+ */
 public class BarraDeAjuste {
 
     // Gráficos
@@ -29,10 +30,11 @@ public class BarraDeAjuste {
     private Color rojo = new Color(192, 40, 40);
     private Color blanco = new Color(240, 240, 255);
     /**
-     * 
+     * El constructor de BarraDeAjuste
      * @param barraRect el rectángulo asociado a las fronteras de la barra
      * @param nombreDelAjuste nombre que tendrá la configuracion
      * @param variableAjustada la variable que será ajustada por la barra
+     * @param numBarras el número de barritas contenidas en la barra
      */
     public BarraDeAjuste(Rectangle barraRect, String nombreDelAjuste, float variableAjustada, int numBarras){
         numDeBarritas = numBarras;
@@ -57,32 +59,40 @@ public class BarraDeAjuste {
         triangulo2.addPoint(barraRect.x+barraRect.height/4+ barraRect.width, barraRect.y + barraRect.height);
         
     }
-    /**
-     * 
-     * @return la variable ajustada segun lo 'llena' que esté la barra
-     */
+
     public int numBarrasEncendidas(){
         return barritasEncendidas;
     }
+     /**
+     * Calcula la proporcion de barritas encendidas con respecto al número de
+     * barritas y en base a esto devuelve variableAjustada multiplicada por
+     * el valor obtenido.
+     * @return la variable ajustada segun lo 'llena' que esté la barra
+     */
     public float getVariableAjustada(){
         float ratio = ((float)barritasEncendidas/(float)numDeBarritas);
         return (float)variableAjustada*ratio;
     }
+    /**
+     * Aumenta en uno el número de barritas encendidas
+     */
     public void aumentaAjuste(){
         if(barritasEncendidas < numDeBarritas){
             barritasEncendidas++;
         }      
     }
+    /**
+     * Decrementa en uno el número de barritas encendidas
+     */
     public void decrementaAjuste(){
         if(barritasEncendidas > 0){
             barritasEncendidas--;
         }      
     }
     /**
-     * Actualiza el estado de la barra. Debería llamarse en cada frame
-     * @param mouseCords actuales del mouse 
+     * Actualiza el estado de la barra. Debería llamarse en cada frame.
+     * @param mouseCords coordenadas actuales del mouse 
      * @param clicking true si el usuario actualmente está haciendo click
-     * @return variable ajustada segun el nivel de la barra
      */
     public void actualizar(int[] mouseCords, boolean clicking){
         Rectangle mouse = new Rectangle(mouseCords[0], mouseCords[1], 1, 1);

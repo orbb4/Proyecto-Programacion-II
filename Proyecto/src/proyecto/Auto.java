@@ -18,7 +18,7 @@ import javax.sound.sampled.*;
 import java.io.*;
 
 /**
- *
+ * Un auto manejable por el usuario que será utilizado durante la ejecución del juego
  * @author bas_b
  */
 public class Auto {
@@ -44,7 +44,10 @@ public class Auto {
     // Sprites
     private ImageObserver obs;
     private Image img;
-    
+    /**
+     * El constructor del auto
+     * @param rectAuto el rectángulo asociado a la posición dimensiones del auto
+     */
     public Auto(Rectangle rectAuto){
         img = new ImageIcon(this.getClass().getResource("../images/Auto/rojo1.png")).getImage();
         ruedas = new Ruedas(new Rectangle(600, 200, 20, 40)); //40-80
@@ -99,6 +102,11 @@ public class Auto {
             accel-=tasaDeCambioAccel;
         }       
     }
+    /**
+     * Guarda las dos últimas coordenadas que tomó el auto. Su propósito será
+     * usarlas para devolver el auto a su posición previa en caso de colisionar,
+     * evitando que quede atascado en un collider
+     */
     private void ultimasPosicionesUpdate(){
         ultimasPosiciones[0][0] = ultimasPosiciones[1][0];
         ultimasPosiciones[0][1] = ultimasPosiciones[1][1];
@@ -106,7 +114,10 @@ public class Auto {
         ultimasPosiciones[1][0] = rect.x;
         ultimasPosiciones[1][1] = rect.y;
     }
-    
+    /**
+     * Método que debe ser llamado en de que se detecte que el auto ha
+     * colisionado
+     */
     public void colisiona(){
         velocidad*=-0.5;
         System.out.println("El auto colisionó.");
@@ -134,11 +145,7 @@ public class Auto {
     /**
      * Actualiza la posición del vehículo
      */
-    public void actualizaPosicion(){
-        float roce = 0.5f;
-        // Se usara para asegurar que la fuerza de roce se oponga a la del
-        // movimiento
-        //System.out.println(accel);     
+    public void actualizaPosicion(){  
         // Revisamos si la aceleracion sobrepasa el limite del auto y si es asi,
         // la aceleracion se queda en el valor limite en vez de seguir subiendo.
         // Se hara algo similar con la velocidad.
@@ -172,12 +179,15 @@ public class Auto {
         }
         return var;
     }
+    /**Devuelve el rectángulo asociado al auto
+     * @return rectángulo asociado al auto
+     */
     public Rectangle2D.Float getRect(){
         return rect;
     }
     /**
      * Rota las ruedas según un ángulo dado
-     * @param angulo el ángulo usado para rotar
+     * @param angulo el ángulo en el que serán rotadas las ruedas
      */
     public void rotaRuedas(float angulo){
         ruedas.setAngulo(angulo, true, true, false, false);

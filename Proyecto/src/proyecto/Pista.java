@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * Una pista de apariencia configurable que cuenta con colliders
+ */
 public class Pista{
     private int x, y, ax, ly;
     private FigurasPista p1;
@@ -11,6 +14,12 @@ public class Pista{
     private ArrayList<Rectangle> colliders;
     private int ANCHO_CIRCUITO = 960;
     private int LARGO_CIRCUITO = 700;
+    /**
+     * El constructor de la pista
+     * @param x posición x de la pista
+     * @param y posición y de la pista
+     * @param ly ancho de las piezas
+     */
     public Pista(int x, int y, int ly){  
         int anchoBorde = 20; // qué tan gruesos son los colliders
         /*x=0;
@@ -34,7 +43,11 @@ public class Pista{
     }
     
     
-    
+    /**
+     * Obtiene los colliders asociados al tipo de pista pasado como argumento
+     * @param tipoPista numero que identifica la pista de la que se obtendran los colliders
+     * @return colliders asociados al tipo de pista elegido
+     */
     public ArrayList<Rectangle> getColliders(int tipoPista){
         ArrayList<Rectangle> collidersCurvas = new ArrayList();
         float anchoBordeSoleras = (ly/17)*2;

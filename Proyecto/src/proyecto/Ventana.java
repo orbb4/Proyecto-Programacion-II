@@ -8,16 +8,20 @@ import javax.sound.sampled.*;
 
 import javax.swing.JFrame;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
+/**
+ * La ventana a usar durante toda la ejecución del proyecto
+ * @author renat
+ */
 public class Ventana extends JFrame {
     
-private final Color COLOR_PANEL = new Color(50, 50, 160);
     private Juego nuevoJuego;
     
     //AUDIO
     private AudioPlayer player;
     private String loc = ".\\src\\audio\\bgm\\m.wav";
-            
+    /**
+     * El constructor de la ventana
+     */        
     public Ventana(){
         super();
         

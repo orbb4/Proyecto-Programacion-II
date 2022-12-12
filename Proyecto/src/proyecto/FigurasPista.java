@@ -7,7 +7,10 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+/**
+ * Representa las partes a usar para la creación de una pista
+ * 
+ */
 public class FigurasPista {
     private int px, py, ax, ly;
     private Image curva2;
@@ -17,7 +20,13 @@ public class FigurasPista {
     private Image curva3;
     private Image curva4;
     private Toolkit t;
-
+    /**
+     * El constructor de la clase FiguraPista. Establecerá el tamaño de la pieza
+     * junto a su posición
+     * @param px coordenada x de la pieza
+     * @param py coordenada y de la pieza
+     * @param ly ancho y alto de la pieza
+     */
     FigurasPista(int px, int py, int ly){
         this.px=px;
         this.py=py;
@@ -32,15 +41,29 @@ public class FigurasPista {
         curva4 = new ImageIcon(this.getClass().getResource("../images/curva4.png")).getImage();
     }
 
-
+    /**
+     * Recibe un par de coordenadas que serán asignadas para posicionar la figura
+     * @param x coordenada x a establecer para la figura
+     * @param y coordenada x a establecer para la figura
+     */
     public void setXY(int x, int y){
         px = x;
         py = y;
     }
+    /**
+     * Devuelve las coordenadas de la figura en la forma {x, y}
+     * @return un array de coordenadas de la forma {x, y}
+     */
     public int[] getXY(){
         int[] xy = {px, py};
         return xy;
     }
+    /**
+     * 
+     * @param g permite que los graficos se pinten en pantalla
+     * @param choice número que representa la figura a dibujar   
+     * @param panel el panel donde será dibujada la figura
+     */
     public void paint(Graphics g, int choice, JPanel panel){
         if(choice==1){
             g.drawImage(curva1, px, py, ly, ly, panel);

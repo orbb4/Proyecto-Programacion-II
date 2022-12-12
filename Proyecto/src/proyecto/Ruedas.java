@@ -5,6 +5,10 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import javax.swing.*;
+/**
+ * Cuatro ruedas cuyo proposito es ser asociadas a un auto
+ * @author renat
+ */
 public class Ruedas {
     // Angulos de las ruedas. En grados.
     private float anguloSI; // superior izquierda
@@ -17,7 +21,10 @@ public class Ruedas {
     private ImageObserver obs;
     
     private Rectangle autoRect;
-    // deberia tener como argumento una instancia de auto
+    /**
+     * El constructor de las ruedas
+     * @param r El rectángulo asociado al auto con el que se quieran usar las ruedas
+     */
     public Ruedas(Rectangle r){
         rueda_img = new ImageIcon(this.getClass().getResource("../images/Auto/rueda.png")).getImage();
         autoRect = r;
@@ -51,12 +58,24 @@ public class Ruedas {
             anguloID = angulo;
         }       
     }
+    /**
+     * Devuelve el ángulo de las ruedas delanteras
+     * @return 
+     */
     public float getAngle(){
         return anguloII;
     }
+    /**
+     * Cambia el rectángulo que usan las ruedas como referencia para posicionarse
+     * @param r nuevo rectángulo de referencia
+     */
     public void setAutoRect(Rectangle r){
         autoRect = r;
     }
+    /**
+     * Pinta las ruedas usando como referencia la posición del rectángulo pasado
+     * como argumento en el constructor
+     */
     public void paint(Graphics g){
         int[] size = {6, 12}; //12-25
         Graphics2D g2d = (Graphics2D)g;        
