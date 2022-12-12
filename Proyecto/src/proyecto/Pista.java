@@ -60,6 +60,7 @@ public class Pista{
                 colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+6*ly+ly,(int)anchoBordeSoleras, ly));
                 colliders.add(new Rectangle(x+11*ly, y+6*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //colliders.add(new Rectangle(x+11*ly, y+6*ly+ly,(int)anchoBordeSoleras, (int)anchoBordeSoleras));
+                break;
             case 1:
                 //curva 1:
                 colliders.add(new Rectangle(x+3*ly, y,(int)anchoBordeSoleras, ly));

@@ -33,7 +33,7 @@ private final Color COLOR_PANEL = new Color(50, 50, 160);
         //INTEGRACION DE ELEMENTOS VARIOS
         player = new AudioPlayer();
         nuevoJuego = new Juego(2);
-        nuevoJuego = new Juego(1);
+        //nuevoJuego = new Juego(1);
         this.add(nuevoJuego);
         this.addKeyListener(nuevoJuego);
         this.addMouseListener(nuevoJuego);

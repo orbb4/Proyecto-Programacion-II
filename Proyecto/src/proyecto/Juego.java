@@ -54,7 +54,6 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         pista3= new Pista(0, 0, 78);
         auto = new Auto(rect);
         this.numPistaElegida = numPistaElegida;
-        
         switch(numPistaElegida){
             case 0:
                 pistaElegida = pista0;
