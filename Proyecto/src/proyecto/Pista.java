@@ -55,129 +55,129 @@ public class Pista{
         switch(tipoPista){
             case 0:
                 //curva SI:
-                colliders.add(new Rectangle(x, y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //colliders.add(new Rectangle(x+15*(ly/17), y+15*(ly/17),(int)anchoBordeSoleras, (int)anchoBordeSoleras));
                
                 //curva II:
-                colliders.add(new Rectangle(x, y+2*ax+2*ly+ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+2*ax+2*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y+2*ax+2*ly+ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+2*ax+2*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //colliders.add(new Rectangle(x+15*(ly/17), y,(int)anchoBordeSoleras, (int)anchoBordeSoleras));
  
                 
                 //curva SD:
-                colliders.add(new Rectangle(x+4*ax+2*ly+ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+4*ax+2*ly+ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+4*ax+2*ly+ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+4*ax+2*ly+ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 
                 //curva ID:
-                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+6*ly+ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+11*ly, y+6*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y+6*ly+ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+11*ly, y+6*ly+ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //colliders.add(new Rectangle(x+11*ly, y+6*ly+ly,(int)anchoBordeSoleras, (int)anchoBordeSoleras));
                 break;
             case 1:
                 //curva 1:
-                colliders.add(new Rectangle(x+3*ly, y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+3*ly+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+3*ly, y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+3*ly+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 2:
-                colliders.add(new Rectangle(x+8*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+8*ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+8*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+8*ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 3:
-                colliders.add(new Rectangle(x, y+3*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+3*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y+3*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+3*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 4:
-                colliders.add(new Rectangle(x+3*ly+15*(ly/17), y+3*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+3*ly, y+3*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+3*ly+15*(ly/17), y+3*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+3*ly, y+3*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 5:
-                colliders.add(new Rectangle(x+8*ly, y+3*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+8*ly+anchoBordeSoleras), y+3*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+8*ly, y+3*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+8*ly+anchoBordeSoleras), y+3*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 6:
-                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+3*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+11*ly, y+3*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y+3*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+11*ly, y+3*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 7:
-                colliders.add(new Rectangle(x+3*ly, y+5*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+3*ly+anchoBordeSoleras), y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+3*ly, y+5*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+3*ly+anchoBordeSoleras), y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 8:
-                colliders.add(new Rectangle(x+8*ly+15*(ly/17), y+5*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+8*ly, y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+8*ly+15*(ly/17), y+5*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+8*ly, y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 9:
-                colliders.add(new Rectangle(x, y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 10:
-                colliders.add(new Rectangle(x+3*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+3*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+3*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+3*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 11:
-                colliders.add(new Rectangle(x+8*ly, y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+8*ly+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+8*ly, y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+8*ly+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva 12:
-                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+11*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+11*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 break;
                 
             case 2:
                 //curva SI1:
-                colliders.add(new Rectangle(x+5*ly, y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+5*ly+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+5*ly, y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+5*ly+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SI2:
-                colliders.add(new Rectangle(x, y+3*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+3*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y+3*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+3*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SI3:
-                colliders.add(new Rectangle(x+7*ly, y+5*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+7*ly+anchoBordeSoleras), y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+7*ly, y+5*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+7*ly+anchoBordeSoleras), y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SI4:
-                colliders.add(new Rectangle(x, y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SD1:
-                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+11*ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+11*ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SD2:
-                colliders.add(new Rectangle(x+5*ly+15*(ly/17), y+3*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+5*ly, y+3*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+5*ly+15*(ly/17), y+3*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+5*ly, y+3*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SD3:
-                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+5*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+11*ly, y+5*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y+5*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+11*ly, y+5*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SD4:
-                colliders.add(new Rectangle(x+7*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+7*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras)); 
+                collidersCurvas.add(new Rectangle(x+7*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+7*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras)); 
                 break;
                 
             case 3:
                 //curva 1:
-                colliders.add(new Rectangle(x, y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva2:
-                colliders.add(new Rectangle(x+3*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+3*ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+3*ly+15*(ly/17), y,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+3*ly, y,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva3:
-                colliders.add(new Rectangle(x+6*ly, y+ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+6*ly+anchoBordeSoleras), y+ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+6*ly, y+ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+6*ly+anchoBordeSoleras), y+ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva4:
-                colliders.add(new Rectangle(x+9*ly+15*(ly/17), y+ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+9*ly, y+ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+9*ly+15*(ly/17), y+ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+9*ly, y+ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva5:
-                colliders.add(new Rectangle(x+3*ly, y+4*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+3*ly+anchoBordeSoleras), y+4*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+3*ly, y+4*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+3*ly+anchoBordeSoleras), y+4*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva6:
-                colliders.add(new Rectangle(x+6*ly+15*(ly/17), y+4*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+6*ly, y+4*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+6*ly+15*(ly/17), y+4*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+6*ly, y+4*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva7:
-                colliders.add(new Rectangle(x+9*ly, y+4*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+9*ly+anchoBordeSoleras), y+4*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+9*ly, y+4*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+9*ly+anchoBordeSoleras), y+4*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva8:
-                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+4*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+11*ly, y+4*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y+4*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+11*ly, y+4*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva9:
-                colliders.add(new Rectangle(x, y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle((int)(x+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x, y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva10:
-                colliders.add(new Rectangle(x+11*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
-                colliders.add(new Rectangle(x+11*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+11*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 break;
             
             
            
         }
         System.out.println(colliders.size());
-        return colliders;
+        return collidersCurvas;
         
     }
     

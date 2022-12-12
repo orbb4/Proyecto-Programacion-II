@@ -84,7 +84,10 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         Timer timer = new Timer(15, new ActionListener(){      
         public void actionPerformed(ActionEvent e)
             {
+                System.out.println(barraTipoPista.numBarrasEncendidas());
+                System.out.println("aaaaaaaaaaaaaaaaaaaa " + pistaElegida.getColliders(barraTipoPista.numBarrasEncendidas()).size());
                 for(Rectangle collider: pistaElegida.getColliders( barraTipoPista.numBarrasEncendidas())){
+                    
                     if(auto.getRect().getBounds2D().intersects(collider)){
                         auto.colisiona();
                         break;
