@@ -46,4 +46,4 @@ public class Ventana extends JFrame {
         nuevoJuego.setBounds(0, 0, 1370, 700);
         player.play(loc);
    }        
-}         
+}   

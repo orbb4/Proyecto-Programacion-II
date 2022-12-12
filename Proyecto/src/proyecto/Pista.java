@@ -121,8 +121,8 @@ public class Pista{
                 collidersCurvas.add(new Rectangle(x, y+3*ly,(int)anchoBordeSoleras, ly));
                 collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+3*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SI3:
-                collidersCurvas.add(new Rectangle(x+7*ly, y+5*ly,(int)anchoBordeSoleras, ly));
-                collidersCurvas.add(new Rectangle((int)(x+7*ly+anchoBordeSoleras), y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
+                collidersCurvas.add(new Rectangle(x+6*ly, y+5*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle((int)(x+6*ly+anchoBordeSoleras), y+5*ly,(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SI4:
                 collidersCurvas.add(new Rectangle(x, y+8*ly,(int)anchoBordeSoleras, ly));
                 collidersCurvas.add(new Rectangle((int)(x+anchoBordeSoleras), y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
@@ -136,8 +136,8 @@ public class Pista{
                 collidersCurvas.add(new Rectangle(x+11*ly+15*(ly/17), y+5*ly,(int)anchoBordeSoleras, ly));
                 collidersCurvas.add(new Rectangle(x+11*ly, y+5*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras));
                 //curva SD4:
-                collidersCurvas.add(new Rectangle(x+7*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
-                collidersCurvas.add(new Rectangle(x+7*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras)); 
+                collidersCurvas.add(new Rectangle(x+6*ly+15*(ly/17), y+8*ly,(int)anchoBordeSoleras, ly));
+                collidersCurvas.add(new Rectangle(x+6*ly, y+8*ly+15*(ly/17),(int)(ly-anchoBordeSoleras), (int)anchoBordeSoleras)); 
                 break;
                 
             case 3:
