@@ -18,6 +18,7 @@ import javax.swing.JSlider;
 
 //public class Juego extends JPanel implements KeyListener{
 public class Juego extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
+    private Image pasto;
     private Pista pista0;
     private Pista pista1;
     private Pista pista2;
@@ -46,6 +47,7 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
         
         //INSTANCIACIONES 
         rect = new Rectangle(600, 200, 20, 40); //40-80
+        pasto = new ImageIcon(this.getClass().getResource("../images/bg.jpg")).getImage();
         pista0= new Pista(2, 50, 78);
         pista1= new Pista(0, 0, 78);
         pista2= new Pista(0, 0, 78);
@@ -92,9 +94,36 @@ public class Juego extends JPanel implements KeyListener, MouseListener, MouseMo
     public void paint(Graphics g){
         int maxAnguloRuedas = 16;
         float magnitudGiro = 2f;
-        boolean retroceso = true;       
+        boolean retroceso = true;   
+        int x1=0;
+        int x2=0;
+        int x3=0;
+        int x4=0;
+        int x5=0;
         super.paint(g);
-        this.setBackground(new Color(130, 235, 40));
+        //this.setBackground(new Color(130, 235, 40));
+        for(int i=0; i<25; ++i){
+            if(i>=0 && i<5){
+                g.drawImage(pasto, x1, 0, 198, 140, this);
+                x1=x1+198;
+            }
+            if(i>=5 && i<10){
+                g.drawImage(pasto, x2, 140, 198, 140, this);
+                x2=x2+198;
+            }
+            if(i>=10 && i<15){
+                g.drawImage(pasto, x3, 280, 198, 140, this);
+                x3=x3+198;
+            }  
+            if(i>=15 && i<20){
+                g.drawImage(pasto, x4, 420, 198, 140, this);
+                x4=x4+198;
+            }  
+            if(i>=20 && i<25){
+                g.drawImage(pasto, x5, 560, 198, 140, this);
+                x5=x5+198;
+            }  
+        }
         g.setColor(new Color(40, 40, 40));
         g.fillRect(990, 0, 400, 755);
         g.setColor(Color.WHITE);
